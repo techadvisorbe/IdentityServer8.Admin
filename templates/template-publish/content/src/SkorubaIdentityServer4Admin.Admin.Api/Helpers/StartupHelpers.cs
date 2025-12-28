@@ -1,6 +1,6 @@
 ﻿using System;
 using IdentityModel;
-using IdentityServer4.EntityFramework.Options;
+using IdentityServer8.EntityFramework.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
@@ -15,20 +15,20 @@ using Skoruba.AuditLogging.EntityFramework.Entities;
 using Skoruba.AuditLogging.EntityFramework.Extensions;
 using Skoruba.AuditLogging.EntityFramework.Repositories;
 using Skoruba.AuditLogging.EntityFramework.Services;
-using SkorubaIdentityServer4Admin.Admin.Api.AuditLogging;
-using SkorubaIdentityServer4Admin.Admin.Api.Configuration;
-using SkorubaIdentityServer4Admin.Admin.Api.Configuration.ApplicationParts;
-using SkorubaIdentityServer4Admin.Admin.Api.Configuration.Constants;
-using SkorubaIdentityServer4Admin.Admin.Api.Helpers.Localization;
-using Skoruba.IdentityServer4.Admin.BusinessLogic.Identity.Dtos.Identity;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Configuration.Configuration;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Configuration.MySql;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Configuration.PostgreSQL;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Configuration.SqlServer;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Helpers;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Interfaces;
+using SkorubaIdentityServer8Admin.Admin.Api.AuditLogging;
+using SkorubaIdentityServer8Admin.Admin.Api.Configuration;
+using SkorubaIdentityServer8Admin.Admin.Api.Configuration.ApplicationParts;
+using SkorubaIdentityServer8Admin.Admin.Api.Configuration.Constants;
+using SkorubaIdentityServer8Admin.Admin.Api.Helpers.Localization;
+using Skoruba.IdentityServer8.Admin.BusinessLogic.Identity.Dtos.Identity;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Configuration.Configuration;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Configuration.MySql;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Configuration.PostgreSQL;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Configuration.SqlServer;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Helpers;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Interfaces;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Helpers
+namespace SkorubaIdentityServer8Admin.Admin.Api.Helpers
 {
     public static class StartupHelpers
     {

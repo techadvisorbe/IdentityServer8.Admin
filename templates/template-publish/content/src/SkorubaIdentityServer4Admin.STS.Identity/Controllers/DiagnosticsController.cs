@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-// Original file: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
+// Original file: https://github.com/IdentityServer/IdentityServer8.Quickstart.UI
 // Modified by Jan �koruba
 
 using System.Linq;
@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers;
-using SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Diagnostics;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers;
+using SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Diagnostics;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Controllers
 {
     [SecurityHeaders]
     [Authorize]

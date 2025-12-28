@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.DbContexts;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.DbContexts;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.PostgreSQL.Migrations.AuditLogging
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.PostgreSQL.Migrations.AuditLogging
 {
     [DbContext(typeof(AdminAuditLogDbContext))]
     [Migration("20200419130247_ChangeAuditLogToLong")]

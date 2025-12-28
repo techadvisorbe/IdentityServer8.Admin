@@ -3,9 +3,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.DbContexts;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.DbContexts;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.MySql.Migrations.DataProtection
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.MySql.Migrations.DataProtection
 {
     [DbContext(typeof(IdentityServerDataProtectionDbContext))]
     [Migration("20200419131430_AddDataProtection")]

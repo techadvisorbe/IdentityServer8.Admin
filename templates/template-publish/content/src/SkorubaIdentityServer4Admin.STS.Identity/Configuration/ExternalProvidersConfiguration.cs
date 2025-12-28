@@ -1,4 +1,4 @@
-﻿namespace SkorubaIdentityServer4Admin.STS.Identity.Configuration
+﻿namespace SkorubaIdentityServer8Admin.STS.Identity.Configuration
 {
     public class ExternalProvidersConfiguration
     {

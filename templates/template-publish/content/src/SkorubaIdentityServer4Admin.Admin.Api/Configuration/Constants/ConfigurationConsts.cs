@@ -1,4 +1,4 @@
-﻿namespace SkorubaIdentityServer4Admin.Admin.Api.Configuration.Constants
+﻿namespace SkorubaIdentityServer8Admin.Admin.Api.Configuration.Constants
 {
     public class ConfigurationConsts
     {

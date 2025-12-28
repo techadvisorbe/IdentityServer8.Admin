@@ -29,8 +29,8 @@
 		<PackageReference Include="Microsoft.Identity.Web" Version="1.22.1" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.1" />
-		<PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
-		<PackageReference Include="IdentityServer4.EntityFramework" Version="4.1.2" />
+		<PackageReference Include="IdentityServer8.AspNetIdentity" Version="4.1.2" />
+		<PackageReference Include="IdentityServer8.EntityFramework" Version="4.1.2" />
 		<PackageReference Include="Serilog" Version="2.10.0" />
 		<PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
 		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
@@ -42,13 +42,13 @@
 		<PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
 		<PackageReference Include="Skoruba.AuditLogging.EntityFramework" Version="1.0.0" />
 		<PackageReference Include="NWebsec.AspNetCore.Middleware" Version="3.0.0" />
-		<PackageReference Include="Skoruba.IdentityServer4.Admin.EntityFramework.Configuration" Version="2.1.0" />
-		<PackageReference Include="Skoruba.IdentityServer4.Shared.Configuration" Version="2.1.0" />
+		<PackageReference Include="Skoruba.IdentityServer8.Admin.EntityFramework.Configuration" Version="2.1.0" />
+		<PackageReference Include="Skoruba.IdentityServer8.Shared.Configuration" Version="2.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared\SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.csproj" />
-		<ProjectReference Include="..\SkorubaIdentityServer4Admin.Shared\SkorubaIdentityServer4Admin.Shared.csproj" />
+		<ProjectReference Include="..\SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared\SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.csproj" />
+		<ProjectReference Include="..\SkorubaIdentityServer8Admin.Shared\SkorubaIdentityServer8Admin.Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

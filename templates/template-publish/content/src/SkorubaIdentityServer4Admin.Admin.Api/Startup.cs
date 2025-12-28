@@ -10,19 +10,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Skoruba.AuditLogging.EntityFramework.Entities;
-using SkorubaIdentityServer4Admin.Admin.Api.Configuration;
-using SkorubaIdentityServer4Admin.Admin.Api.Configuration.Authorization;
-using SkorubaIdentityServer4Admin.Admin.Api.ExceptionHandling;
-using SkorubaIdentityServer4Admin.Admin.Api.Helpers;
-using SkorubaIdentityServer4Admin.Admin.Api.Mappers;
-using SkorubaIdentityServer4Admin.Admin.Api.Resources;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.DbContexts;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.Entities.Identity;
-using Skoruba.IdentityServer4.Shared.Configuration.Helpers;
-using SkorubaIdentityServer4Admin.Shared.Dtos;
-using SkorubaIdentityServer4Admin.Shared.Dtos.Identity;
+using SkorubaIdentityServer8Admin.Admin.Api.Configuration;
+using SkorubaIdentityServer8Admin.Admin.Api.Configuration.Authorization;
+using SkorubaIdentityServer8Admin.Admin.Api.ExceptionHandling;
+using SkorubaIdentityServer8Admin.Admin.Api.Helpers;
+using SkorubaIdentityServer8Admin.Admin.Api.Mappers;
+using SkorubaIdentityServer8Admin.Admin.Api.Resources;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.DbContexts;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.Entities.Identity;
+using Skoruba.IdentityServer8.Shared.Configuration.Helpers;
+using SkorubaIdentityServer8Admin.Shared.Dtos;
+using SkorubaIdentityServer8Admin.Shared.Dtos.Identity;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api
+namespace SkorubaIdentityServer8Admin.Admin.Api
 {
     public class Startup
     {

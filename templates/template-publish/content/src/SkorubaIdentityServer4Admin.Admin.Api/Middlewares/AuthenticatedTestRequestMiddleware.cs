@@ -6,7 +6,7 @@ using IdentityModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Middlewares
+namespace SkorubaIdentityServer8Admin.Admin.Api.Middlewares
 {
     public class AuthenticatedTestRequestMiddleware
     {

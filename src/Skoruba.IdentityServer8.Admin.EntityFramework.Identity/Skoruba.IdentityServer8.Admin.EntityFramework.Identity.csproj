@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net8.0</TargetFramework>
+	  <Description>Entity Framework layer for the administration of the Asp.Net Core Identity and IdentityServer8</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HigginsSoft.IdentityServer8.EntityFramework" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Skoruba.IdentityServer8.Admin.EntityFramework\Skoruba.IdentityServer8.Admin.EntityFramework.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SkorubaIdentityServer4Admin.Admin.Api.Configuration.Constants;
-using SkorubaIdentityServer4Admin.Admin.Api.Dtos.PersistedGrants;
-using SkorubaIdentityServer4Admin.Admin.Api.ExceptionHandling;
-using SkorubaIdentityServer4Admin.Admin.Api.Helpers;
-using SkorubaIdentityServer4Admin.Admin.Api.Mappers;
-using Skoruba.IdentityServer4.Admin.BusinessLogic.Identity.Services.Interfaces;
+using SkorubaIdentityServer8Admin.Admin.Api.Configuration.Constants;
+using SkorubaIdentityServer8Admin.Admin.Api.Dtos.PersistedGrants;
+using SkorubaIdentityServer8Admin.Admin.Api.ExceptionHandling;
+using SkorubaIdentityServer8Admin.Admin.Api.Helpers;
+using SkorubaIdentityServer8Admin.Admin.Api.Mappers;
+using Skoruba.IdentityServer8.Admin.BusinessLogic.Identity.Services.Interfaces;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Controllers
+namespace SkorubaIdentityServer8Admin.Admin.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

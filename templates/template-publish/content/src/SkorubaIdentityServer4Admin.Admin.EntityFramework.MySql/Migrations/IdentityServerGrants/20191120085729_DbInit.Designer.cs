@@ -4,9 +4,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.DbContexts;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.DbContexts;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.MySql.Migrations.IdentityServerGrants
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.MySql.Migrations.IdentityServerGrants
 {
     [DbContext(typeof(IdentityServerPersistedGrantDbContext))]
     [Migration("20191120085729_DbInit")]
@@ -19,7 +19,7 @@ namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.MySql.Migrations.Ide
                 .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
+            modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.DeviceFlowCodes", b =>
                 {
                     b.Property<string>("UserCode")
                         .HasColumnType("varchar(200) CHARACTER SET utf8mb4")
@@ -61,7 +61,7 @@ namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.MySql.Migrations.Ide
                     b.ToTable("DeviceCodes");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.PersistedGrant", b =>
+            modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.PersistedGrant", b =>
                 {
                     b.Property<string>("Key")
                         .HasColumnType("varchar(200) CHARACTER SET utf8mb4")

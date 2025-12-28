@@ -3,9 +3,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Skoruba.IdentityServer4.Admin.BusinessLogic.Shared.ExceptionHandling;
+using Skoruba.IdentityServer8.Admin.BusinessLogic.Shared.ExceptionHandling;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.ExceptionHandling
+namespace SkorubaIdentityServer8Admin.Admin.Api.ExceptionHandling
 {
     public class ControllerExceptionFilterAttribute : ExceptionFilterAttribute
     {

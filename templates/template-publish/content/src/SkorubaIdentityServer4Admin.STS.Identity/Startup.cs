@@ -5,16 +5,16 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.DbContexts;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.Entities.Identity;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration.Constants;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration.Interfaces;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.DbContexts;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.Entities.Identity;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration.Constants;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration.Interfaces;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers;
 using System;
-using Skoruba.IdentityServer4.Shared.Configuration.Helpers;
+using Skoruba.IdentityServer8.Shared.Configuration.Helpers;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity
+namespace SkorubaIdentityServer8Admin.STS.Identity
 {
     public class Startup
     {

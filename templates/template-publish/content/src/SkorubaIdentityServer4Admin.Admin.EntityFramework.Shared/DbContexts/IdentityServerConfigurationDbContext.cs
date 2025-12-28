@@ -1,10 +1,10 @@
-﻿using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Entities;
-using IdentityServer4.EntityFramework.Options;
+﻿using IdentityServer8.EntityFramework.DbContexts;
+using IdentityServer8.EntityFramework.Entities;
+using IdentityServer8.EntityFramework.Options;
 using Microsoft.EntityFrameworkCore;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Interfaces;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Interfaces;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.DbContexts
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.DbContexts
 {
     public class IdentityServerConfigurationDbContext : ConfigurationDbContext<IdentityServerConfigurationDbContext>, IAdminConfigurationDbContext
     {

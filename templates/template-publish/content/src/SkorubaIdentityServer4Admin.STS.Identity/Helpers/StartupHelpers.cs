@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using IdentityServer4.EntityFramework.Storage;
+using IdentityServer8.EntityFramework.Storage;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -13,26 +13,26 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration.ApplicationParts;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration.Constants;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration.Interfaces;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers.Localization;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration.ApplicationParts;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration.Constants;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration.Interfaces;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers.Localization;
 using System.Linq;
-using IdentityServer4.Configuration;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Interfaces;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Helpers;
+using IdentityServer8.Configuration;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Interfaces;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Helpers;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Identity.Web;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Configuration.Configuration;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Configuration.MySql;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Configuration.PostgreSQL;
-using Skoruba.IdentityServer4.Admin.EntityFramework.Configuration.SqlServer;
-using Skoruba.IdentityServer4.Shared.Configuration.Authentication;
-using Skoruba.IdentityServer4.Shared.Configuration.Configuration.Identity;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Configuration.Configuration;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Configuration.MySql;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Configuration.PostgreSQL;
+using Skoruba.IdentityServer8.Admin.EntityFramework.Configuration.SqlServer;
+using Skoruba.IdentityServer8.Shared.Configuration.Authentication;
+using Skoruba.IdentityServer8.Shared.Configuration.Configuration.Identity;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Helpers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Helpers
 {
     public static class StartupHelpers
     {
@@ -256,7 +256,7 @@ namespace SkorubaIdentityServer4Admin.STS.Identity.Helpers
         }
 
         /// <summary>
-        /// Add services for authentication, including Identity model, IdentityServer4 and external providers
+        /// Add services for authentication, including Identity model, IdentityServer8 and external providers
         /// </summary>
         /// <typeparam name="TIdentityDbContext">DbContext for Identity</typeparam>
         /// <typeparam name="TUserIdentity">User Identity class</typeparam>
@@ -339,7 +339,7 @@ namespace SkorubaIdentityServer4Admin.STS.Identity.Helpers
         }
 
         /// <summary>
-        /// Add configuration for IdentityServer4
+        /// Add configuration for IdentityServer8
         /// </summary>
         /// <typeparam name="TUserIdentity"></typeparam>
         /// <typeparam name="TConfigurationDbContext"></typeparam>

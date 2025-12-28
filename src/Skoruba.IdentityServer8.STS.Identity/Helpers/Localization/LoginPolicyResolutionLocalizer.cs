@@ -1,0 +1,20 @@
+﻿using Skoruba.IdentityServer8.Shared.Configuration.Configuration.Identity;
+
+namespace Skoruba.IdentityServer8.STS.Identity.Helpers.Localization
+{
+    public static class LoginPolicyResolutionLocalizer
+    {
+        public static string GetUserNameLocalizationKey(LoginResolutionPolicy policy)
+        {
+            switch (policy)
+            {
+                case LoginResolutionPolicy.Username:
+                    return "Username";
+                case LoginResolutionPolicy.Email:
+                    return "Email";
+                default:
+                    return "Username";
+            }
+        }
+    }
+}

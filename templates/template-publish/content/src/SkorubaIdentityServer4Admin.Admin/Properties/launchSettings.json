@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "SkorubaIdentityServer4Admin.Admin": {
+    "SkorubaIdentityServer8Admin.Admin": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -3,24 +3,24 @@
   "author": "Jan Skoruba",
   "classifications": [
     "Web",
-    "IdentityServer4",
+    "IdentityServer8",
     "Admin"
   ],
-  "name": "Skoruba IdentityServer4 Admin",
-  "identity": "Skoruba.IdentityServer4.Admin",
-  "groupIdentity": "Skoruba.IdentityServer4.Admin",
+  "name": "Skoruba IdentityServer8 Admin",
+  "identity": "Skoruba.IdentityServer8.Admin",
+  "groupIdentity": "Skoruba.IdentityServer8.Admin",
   "shortName": "skoruba.is4admin",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "Skoruba.IdentityServer4",
+  "sourceName": "Skoruba.IdentityServer8",
   "preferNameDirectory": true,
   "symbols": {
     "title": {
       "type": "parameter",
-      "defaultValue": "Skoruba IdentityServer4 Admin",
-      "replaces": "Skoruba IdentityServer4 Admin",
+      "defaultValue": "Skoruba IdentityServer8 Admin",
+      "replaces": "Skoruba IdentityServer8 Admin",
       "isRequired": true,
       "description": "The title and footer of the administration"
     },
@@ -36,40 +36,40 @@
       "defaultValue": "skoruba_identity_admin",
       "replaces": "skoruba_identity_admin",
       "isRequired": true,
-      "description": "The name of client, that is be used in the IdentityServer4"
+      "description": "The name of client, that is be used in the IdentityServer8"
     },
     "adminclientsecret": {
       "type": "parameter",
       "defaultValue": "skoruba_admin_client_secret",
       "replaces": "skoruba_admin_client_secret",
       "isRequired": true,
-      "description": "The value of client secret, that is be used in the IdentityServer4"
+      "description": "The value of client secret, that is be used in the IdentityServer8"
     }
   },
   "primaryOutputs": [
     {
-      "path": "src/Skoruba.IdentityServer4.Admin/Skoruba.IdentityServer4.Admin.csproj"
+      "path": "src/Skoruba.IdentityServer8.Admin/Skoruba.IdentityServer8.Admin.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer4.STS.Identity/Skoruba.IdentityServer4.STS.Identity.csproj"
+      "path": "src/Skoruba.IdentityServer8.STS.Identity/Skoruba.IdentityServer8.STS.Identity.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer4.Admin.Api/Skoruba.IdentityServer4.Admin.Api.csproj"
+      "path": "src/Skoruba.IdentityServer8.Admin.Api/Skoruba.IdentityServer8.Admin.Api.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer4.Admin.EntityFramework.Shared/Skoruba.IdentityServer4.Admin.EntityFramework.Shared.csproj"
+      "path": "src/Skoruba.IdentityServer8.Admin.EntityFramework.Shared/Skoruba.IdentityServer8.Admin.EntityFramework.Shared.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer4.Admin.EntityFramework.MySql/Skoruba.IdentityServer4.Admin.EntityFramework.MySql.csproj"
+      "path": "src/Skoruba.IdentityServer8.Admin.EntityFramework.MySql/Skoruba.IdentityServer8.Admin.EntityFramework.MySql.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer4.Admin.EntityFramework.PostgreSQL/Skoruba.IdentityServer4.Admin.EntityFramework.PostgreSQL.csproj"
+      "path": "src/Skoruba.IdentityServer8.Admin.EntityFramework.PostgreSQL/Skoruba.IdentityServer8.Admin.EntityFramework.PostgreSQL.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer4.Admin.EntityFramework.SqlServer/Skoruba.IdentityServer4.Admin.EntityFramework.SqlServer.csproj"
+      "path": "src/Skoruba.IdentityServer8.Admin.EntityFramework.SqlServer/Skoruba.IdentityServer8.Admin.EntityFramework.SqlServer.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer4.Shared/Skoruba.IdentityServer4.Shared.csproj"
+      "path": "src/Skoruba.IdentityServer8.Shared/Skoruba.IdentityServer8.Shared.csproj"
     }
   ],
   "postActions": [

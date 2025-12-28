@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-// File: https://github.com/IdentityServer/IdentityServer4/blob/main/samples/Quickstarts/3_AspNetCoreAndApis/src/IdentityServer/Quickstart/Account/ExternalController.cs
+// File: https://github.com/IdentityServer/IdentityServer8/blob/main/samples/Quickstarts/3_AspNetCoreAndApis/src/IdentityServer/Quickstart/Account/ExternalController.cs
 
-// Modified by Jan Škoruba and J. Arturo
+// Modified by Jan Škoruba , Abdelilah El mansouri and J. Arturo
 
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
@@ -15,7 +15,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Helpers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Helpers
 {
     public class ApplicationSignInManager<TUser> : SignInManager<TUser>
         where TUser : class

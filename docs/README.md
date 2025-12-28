@@ -1,8 +1,8 @@
-![Logo](Images/Skoruba.IdentityServer4.Admin-Logo-ReadMe.png)
+![Logo](Images/Skoruba.IdentityServer8.Admin-Logo-ReadMe.png)
 
-# Skoruba.IdentityServer4.Admin - Documentation
+# Skoruba.IdentityServer8.Admin - Documentation
 
-- The administration of the IdentityServer4 and Asp.Net Core Identity
+- The administration of the IdentityServer8 and Asp.Net Core Identity
 
 # Content
 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Dtos.Clients
+namespace SkorubaIdentityServer8Admin.Admin.Api.Dtos.Clients
 {
     public class ClientCloneApiDto
     {

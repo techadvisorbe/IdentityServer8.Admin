@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-// Original file: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
-// Modified by Jan Škoruba
+// Original file: https://github.com/IdentityServer/IdentityServer8.Quickstart.UI
+// Modified by Jan Škoruba , Abdelilah El mansouri
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Helpers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Helpers
 {
     public class SecurityHeadersAttribute : ActionFilterAttribute
     {

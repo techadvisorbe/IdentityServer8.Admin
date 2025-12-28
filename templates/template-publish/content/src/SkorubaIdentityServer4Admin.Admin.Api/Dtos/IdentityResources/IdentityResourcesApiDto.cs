@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Dtos.IdentityResources
+namespace SkorubaIdentityServer8Admin.Admin.Api.Dtos.IdentityResources
 {
     public class IdentityResourcesApiDto
     {

@@ -1,8 +1,8 @@
-# How to configure the Administration - IdentityServer4 and Asp.Net Core Identity
+# How to configure the Administration - IdentityServer8 and Asp.Net Core Identity
 
 ## 1) Admin UI:
 
-- `Skoruba.IdentityServer4.Admin` - `Startup.cs` - method `ConfigureServices`:
+- `Skoruba.IdentityServer8.Admin` - `Startup.cs` - method `ConfigureServices`:
 
 ### Configure DbContexts
 
@@ -26,17 +26,17 @@ services.AddDbContexts<AdminIdentityDbContext, IdentityServerConfigurationDbCont
 services.AddAuthenticationServices<AdminIdentityDbContext, UserIdentity, UserIdentityRole>(HostingEnvironment, rootConfiguration.AdminConfiguration);
 ```
 
-This `AddAuthenticationServices` helper method is for registration authentication. For administration is used OpenIdConnect middleware which is connected to IdentityServer4.
+This `AddAuthenticationServices` helper method is for registration authentication. For administration is used OpenIdConnect middleware which is connected to IdentityServer8.
 
 > For staging environment is used cookie middleware for fake authentication. In integration tests is checked this fake login url. /Account/Login
 
-### Configuration of services/repositories for IdentityServer4
+### Configuration of services/repositories for IdentityServer8
 
 ```
 services.AddAdminServices<IdentityServerConfigurationDbContext, IdentityServerPersistedGrantDbContext, AdminLogDbContext>();
 ```
 
-This extension method `AddAdminServices` is for registration all dependencies - like repositories, services for managing IdentityServer4 configuration and operational store. Here is necessary to inject DbContexts only.
+This extension method `AddAdminServices` is for registration all dependencies - like repositories, services for managing IdentityServer8 configuration and operational store. Here is necessary to inject DbContexts only.
 
 ### Configuration of Asp.Net Core Identity
 
@@ -76,7 +76,7 @@ This extensions method contains only one base policy for administration of whole
 
 ## 2) Security token service (STS)
 
-- `Skoruba.IdentityServer4.STS.Identity` - `Startup.cs` - method `ConfigureServices`:
+- `Skoruba.IdentityServer8.STS.Identity` - `Startup.cs` - method `ConfigureServices`:
 
 ### Configure DbContexts
 
@@ -86,21 +86,21 @@ services.AddIdentityDbContext<AdminIdentityDbContext>(Configuration);
 
 In this extension method `AddIdentityDbContext` is defined DbContext for Asp.Net Core Identity
 
-In `StartupHelpers.cs` is another extension method for registration of DbContexts for IdentityServer4:
+In `StartupHelpers.cs` is another extension method for registration of DbContexts for IdentityServer8:
 
 ```
 AddIdentityServerStoresWithDbContexts<TConfigurationDbContext, TPersistedGrantDbContext>(configuration);
 ```
 
-### Configuration of IdentityServer4 and Asp.Net Core Identity
+### Configuration of IdentityServer8 and Asp.Net Core Identity
 
-- `Skoruba.IdentityServer4.STS.Identity` - `Startup.cs` - method `ConfigureServices`:
+- `Skoruba.IdentityServer8.STS.Identity` - `Startup.cs` - method `ConfigureServices`:
 
 ```
 services.AddAuthenticationServices<IdentityServerConfigurationDbContext, IdentityServerPersistedGrantDbContext, AdminIdentityDbContext, UserIdentity, UserIdentityRole>(Environment, Configuration, Logger);
 ```
 
-- This extension method is defined for registration of Asp.Net Core Identity and IdentityServer4 - including one external provider (GitHub).
+- This extension method is defined for registration of Asp.Net Core Identity and IdentityServer8 - including one external provider (GitHub).
 
 ### Configuration of Localization and MVC
 

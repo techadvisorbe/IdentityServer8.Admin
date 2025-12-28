@@ -1,4 +1,4 @@
-﻿namespace SkorubaIdentityServer4Admin.Admin.Api.Helpers
+﻿namespace SkorubaIdentityServer8Admin.Admin.Api.Helpers
 {
     public static class UrlHelpers
     {

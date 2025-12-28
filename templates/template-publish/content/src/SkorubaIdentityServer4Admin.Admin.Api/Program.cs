@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Skoruba.IdentityServer4.Shared.Configuration.Helpers;
+using Skoruba.IdentityServer8.Shared.Configuration.Helpers;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api
+namespace SkorubaIdentityServer8Admin.Admin.Api
 {
     public class Program
     {

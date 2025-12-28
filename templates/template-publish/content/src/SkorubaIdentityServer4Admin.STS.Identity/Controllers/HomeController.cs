@@ -1,20 +1,20 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-// Original file: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
-// Modified by Jan Škoruba
+// Original file: https://github.com/IdentityServer/IdentityServer8.Quickstart.UI
+// Modified by Jan Škoruba , Abdelilah El mansouri
 
 using System;
 using System.Threading.Tasks;
-using IdentityServer4.Services;
+using IdentityServer8.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
-using Skoruba.IdentityServer4.Shared.Configuration.Helpers;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers;
-using SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Home;
+using Skoruba.IdentityServer8.Shared.Configuration.Helpers;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers;
+using SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Home;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Controllers
 {
     [SecurityHeaders]
     public class HomeController : Controller

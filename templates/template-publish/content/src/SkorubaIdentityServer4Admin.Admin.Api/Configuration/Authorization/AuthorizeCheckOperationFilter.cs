@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Configuration.Authorization
+namespace SkorubaIdentityServer8Admin.Admin.Api.Configuration.Authorization
 {
     public class AuthorizeCheckOperationFilter : IOperationFilter
     {

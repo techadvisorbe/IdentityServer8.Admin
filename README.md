@@ -1,14 +1,14 @@
-![Logo](docs/Images/Skoruba.IdentityServer4.Admin-Logo-ReadMe.png)
+![Logo](docs/Images/Skoruba.IdentityServer8.Admin-Logo-ReadMe.png)
 
-# Skoruba.IdentityServer4.Admin
+# Skoruba.IdentityServer8.Admin
 
-> The administration for the IdentityServer4 and Asp.Net Core Identity
+> The administration for the IdentityServer8 and Asp.Net Core Identity
 
 ## Big Thanks 🙏🏻 and an Update on the Project ⚡️
 
-I just want to say a huge **THANK YOU** to everyone who has contributed to **IdentityServer4.Admin** over the years. Reaching almost **4,000 stars** ⭐️ on GitHub has been such an incredible milestone, and it is all thanks to this **amazing community**. I truly could not have done it without you.
+I just want to say a huge **THANK YOU** to everyone who has contributed to **IdentityServer8.Admin** over the years. Reaching almost **4,000 stars** ⭐️ on GitHub has been such an incredible milestone, and it is all thanks to this **amazing community**. I truly could not have done it without you.
 
-With the end of support for **.NET 6** and **IdentityServer4**, I have made the decision to **stop maintaining this repository**.
+With the end of support for **.NET 6** and **IdentityServer8**, I have made the decision to **stop maintaining this repository**.
 
 ### But do not worry—this is not goodbye!
 
@@ -39,12 +39,12 @@ Cheers,
 
 - Install the dotnet new template:
 
-### Version 2.0.0 and higher works with **IdentityServer4 version 4** 🚀
+### Version 2.0.0 and higher works with **IdentityServer8 version 4** 🚀
 
 - 🔒 **NOTE:** This version affects your database data if you use the default database migrations that are part of the project - double check the migrations according to your database provider and create a database backup
 
 ```sh
-dotnet new -i Skoruba.IdentityServer4.Admin.Templates::2.1.0
+dotnet new -i Skoruba.IdentityServer8.Admin.Templates::2.1.0
 ```
 
 ### Create new project:
@@ -61,14 +61,14 @@ Project template options:
 --adminemail: [string value] admin email
 --title: [string value] for title and footer of the administration in UI
 --adminrole: [string value] for name of admin role, that is used to authorize the administration
---adminclientid: [string value] for client name, that is used in the IdentityServer4 configuration for admin client
---adminclientsecret: [string value] for client secret, that is used in the IdentityServer4 configuration for admin client
+--adminclientid: [string value] for client name, that is used in the IdentityServer8 configuration for admin client
+--adminclientsecret: [string value] for client secret, that is used in the IdentityServer8 configuration for admin client
 --dockersupport: [boolean value] include docker support
 ```
 
-## How to configure the Administration - IdentityServer4 and Asp.Net Core Identity
+## How to configure the Administration - IdentityServer8 and Asp.Net Core Identity
 
-- [Follow these steps for setup project to use existing IdentityServer4 and Asp.Net Core Identity](docs/Configure-Administration.md)
+- [Follow these steps for setup project to use existing IdentityServer8 and Asp.Net Core Identity](docs/Configure-Administration.md)
 
 ### Template uses following list of nuget packages
 
@@ -77,9 +77,9 @@ Project template options:
 ### Running in Visual Studio
 
 - Set Startup projects:
-  - Skoruba.IdentityServer4.Admin
-  - Skoruba.IdentityServer4.Admin.Api
-  - Skoruba.IdentityServer4.STS.Identity
+  - Skoruba.IdentityServer8.Admin
+  - Skoruba.IdentityServer8.Admin.Api
+  - Skoruba.IdentityServer8.STS.Identity
 
 ## Configuration of Administration for Deployment
 
@@ -109,7 +109,7 @@ Project template options:
 ## Cloning
 
 ```sh
-git clone https://github.com/skoruba/IdentityServer4.Admin
+git clone https://github.com/skoruba/IdentityServer8.Admin
 ```
 
 ## Running via Docker
@@ -195,10 +195,10 @@ docker-compose up -d
 ## Installation of the Client Libraries
 
 ```sh
-cd src/Skoruba.IdentityServer4.Admin
+cd src/Skoruba.IdentityServer8.Admin
 npm install
 
-cd src/Skoruba.IdentityServer4.STS.Identity
+cd src/Skoruba.IdentityServer8.STS.Identity
 npm install
 ```
 
@@ -255,23 +255,23 @@ The following Gulp commands are available:
 
 **PostgreSQL**:
 
-> Server=localhost;Port=5432;Database=IdentityServer4Admin;User Id=sa;Password=#;
+> Server=localhost;Port=5432;Database=IdentityServer8Admin;User Id=sa;Password=#;
 
 **MySql:**
 
-> server=localhost;database=IdentityServer4Admin;user=root;password=#
+> server=localhost;database=IdentityServer8Admin;user=root;password=#
 
 ### We suggest to use seed data:
 
 - In `Program.cs` -> `Main`, uncomment `DbMigrationHelpers.EnsureSeedData(host)` or use dotnet CLI `dotnet run /seed` or via `SeedConfiguration` in `appsettings.json`
-- The `Clients` and `Resources` files in `identityserverdata.json` (section called: IdentityServerData) - are the initial data, based on a sample from IdentityServer4
+- The `Clients` and `Resources` files in `identityserverdata.json` (section called: IdentityServerData) - are the initial data, based on a sample from IdentityServer8
 - The `Users` file in `identitydata.json` (section called: IdentityData) contains the default admin username and password for the first login
 
 ## Authentication and Authorization
 
 - Change the specific URLs and names for the IdentityServer and Authentication settings in `appsettings.json`
 - In the controllers is used the policy which name is stored in - `AuthorizationConsts.AdministrationPolicy`. In the policy - `AuthorizationConsts.AdministrationPolicy` is defined required role stored in - `appsettings.json` - `AdministrationRole`.
-- With the default configuration, it is necessary to configure and run instance of IdentityServer4. It is possible to use initial migration for creating the client as it mentioned above
+- With the default configuration, it is necessary to configure and run instance of IdentityServer8. It is possible to use initial migration for creating the client as it mentioned above
 
 ## Azure Key Vault
 
@@ -417,7 +417,7 @@ You can also use your custom theme by integrating it in your project or hosting 
 
 ```json
   "AdminConfiguration": {
-    "PageTitle": "Skoruba IdentityServer4",
+    "PageTitle": "Skoruba IdentityServer8",
     "HomePageLogoUri": "~/images/skoruba-icon.png",
     "FaviconUri": "~/favicon.ico",
     "Theme": "united",
@@ -439,7 +439,7 @@ In `appsettings.json` is following configuration:
   }
 ```
 
-The `Skoruba.IdentityServer4.Admin.BusinessLogic` layer contains folder called `Events` for audit logging. In each method in Services is called function `LogEventAsync` like this:
+The `Skoruba.IdentityServer8.Admin.BusinessLogic` layer contains folder called `Events` for audit logging. In each method in Services is called function `LogEventAsync` like this:
 
 ```
 await AuditEventLogger.LogEventAsync(new ClientDeletedEvent(client));
@@ -449,7 +449,7 @@ Final audit log is available in the table `dbo.AuditLog`.
 
 ### Login Configuration
 
-- In `Skoruba.IdentityServer4.STS.Identity` - in `appsettings.json` is possible to specify which column will be used for login (`Username` or `Email`):
+- In `Skoruba.IdentityServer8.STS.Identity` - in `appsettings.json` is possible to specify which column will be used for login (`Username` or `Email`):
 
 ```
   "LoginConfiguration": {
@@ -467,7 +467,7 @@ or using `Email`:
 
 ### Register Configuration
 
-- In `Skoruba.IdentityServer4.STS.Identity` - in `appsettings.json` is possible to disable user registration (`default: true`):
+- In `Skoruba.IdentityServer8.STS.Identity` - in `appsettings.json` is possible to disable user registration (`default: true`):
 
 ```
  "RegisterConfiguration": {
@@ -494,7 +494,7 @@ or using `Email`:
 
 ## How to configure an external provider in STS
 
-- In `Skoruba.IdentityServer4.STS.Identity/Helpers/StartupHelpers.cs` - is method called `AddExternalProviders` which contains the example with `GitHub`, `AzureAD` configured in `appsettings.json`:
+- In `Skoruba.IdentityServer8.STS.Identity/Helpers/StartupHelpers.cs` - is method called `AddExternalProviders` which contains the example with `GitHub`, `AzureAD` configured in `appsettings.json`:
 
 ```
 "ExternalProvidersConfiguration": {
@@ -607,59 +607,59 @@ Integration tests use StartupTest class which is pre-configured with:
 
 - STS:
 
-  - `Skoruba.IdentityServer4.STS.Identity` - project that contains the instance of IdentityServer4 and combine these samples - [Quickstart UI for the IdentityServer4 with Asp.Net Core Identity and EF Core storage](https://github.com/IdentityServer/IdentityServer4/tree/master/samples/Quickstarts/9_Combined_AspId_and_EFStorage) and [damienbod - IdentityServer4 and Identity template](https://github.com/damienbod/IdentityServer4AspNetCoreIdentityTemplate)
+  - `Skoruba.IdentityServer8.STS.Identity` - project that contains the instance of IdentityServer8 and combine these samples - [Quickstart UI for the IdentityServer8 with Asp.Net Core Identity and EF Core storage](https://github.com/IdentityServer/IdentityServer8/tree/master/samples/Quickstarts/9_Combined_AspId_and_EFStorage) and [damienbod - IdentityServer8 and Identity template](https://github.com/damienbod/IdentityServer8AspNetCoreIdentityTemplate)
 
 - Admin UI Api:
 
-  - `Skoruba.IdentityServer4.Admin.Api` - project with Api for managing data of IdentityServer4 and Asp.Net Core Identity, with swagger support as well
+  - `Skoruba.IdentityServer8.Admin.Api` - project with Api for managing data of IdentityServer8 and Asp.Net Core Identity, with swagger support as well
 
 - Admin UI:
 
-  - `Skoruba.IdentityServer4.Admin.UI` - ASP.NET Core MVC application that contains Admin UI
+  - `Skoruba.IdentityServer8.Admin.UI` - ASP.NET Core MVC application that contains Admin UI
 
-  - `Skoruba.IdentityServer4.Admin` - ASP.NET Core MVC application that uses Admin UI package and it's only for application bootstrap
+  - `Skoruba.IdentityServer8.Admin` - ASP.NET Core MVC application that uses Admin UI package and it's only for application bootstrap
 
-  - `Skoruba.IdentityServer4.Admin.BusinessLogic` - project that contains Dtos, Repositories, Services and Mappers for the IdentityServer4
+  - `Skoruba.IdentityServer8.Admin.BusinessLogic` - project that contains Dtos, Repositories, Services and Mappers for the IdentityServer8
 
-  - `Skoruba.IdentityServer4.Admin.BusinessLogic.Identity` - project that contains Dtos, Repositories, Services and Mappers for the Asp.Net Core Identity
+  - `Skoruba.IdentityServer8.Admin.BusinessLogic.Identity` - project that contains Dtos, Repositories, Services and Mappers for the Asp.Net Core Identity
 
-  - `Skoruba.IdentityServer4.Admin.BusinessLogic.Shared` - project that contains shared Dtos and ExceptionHandling for the Business Logic layer of the IdentityServer4 and Asp.Net Core Identity
+  - `Skoruba.IdentityServer8.Admin.BusinessLogic.Shared` - project that contains shared Dtos and ExceptionHandling for the Business Logic layer of the IdentityServer8 and Asp.Net Core Identity
 
-  - `Skoruba.IdentityServer4.Shared` - Shared common Identity DTOS for Admin UI, Admin UI Api and STS
+  - `Skoruba.IdentityServer8.Shared` - Shared common Identity DTOS for Admin UI, Admin UI Api and STS
 
-  - `Skoruba.IdentityServer4.Shared.Configuration` - Shared common layer for Admin UI, Admin UI Api and STS
+  - `Skoruba.IdentityServer8.Shared.Configuration` - Shared common layer for Admin UI, Admin UI Api and STS
 
-  - `Skoruba.IdentityServer4.Admin.EntityFramework` - EF Core data layer that contains Entities for the IdentityServer4
+  - `Skoruba.IdentityServer8.Admin.EntityFramework` - EF Core data layer that contains Entities for the IdentityServer8
 
-  - `Skoruba.IdentityServer4.Admin.EntityFramework.Configuration` - EF Core data layer that contains configurations
+  - `Skoruba.IdentityServer8.Admin.EntityFramework.Configuration` - EF Core data layer that contains configurations
 
-  - `Skoruba.IdentityServer4.Admin.EntityFramework.Identity` - EF Core data layer that contains Repositories for the Asp.Net Core Identity
+  - `Skoruba.IdentityServer8.Admin.EntityFramework.Identity` - EF Core data layer that contains Repositories for the Asp.Net Core Identity
 
-  - `Skoruba.IdentityServer4.Admin.EntityFramework.Extensions` - project that contains extensions related to EntityFramework
+  - `Skoruba.IdentityServer8.Admin.EntityFramework.Extensions` - project that contains extensions related to EntityFramework
 
-  - `Skoruba.IdentityServer4.Admin.EntityFramework.Shared` - project that contains DbContexts for the IdentityServer4, Logging and Asp.Net Core Identity, inluding shared Identity entities
+  - `Skoruba.IdentityServer8.Admin.EntityFramework.Shared` - project that contains DbContexts for the IdentityServer8, Logging and Asp.Net Core Identity, inluding shared Identity entities
 
-  - `Skoruba.IdentityServer4.Admin.EntityFramework.SqlServer` - project that contains migrations for SqlServer
+  - `Skoruba.IdentityServer8.Admin.EntityFramework.SqlServer` - project that contains migrations for SqlServer
 
-  - `Skoruba.IdentityServer4.Admin.EntityFramework.MySql` - project that contains migrations for MySql
+  - `Skoruba.IdentityServer8.Admin.EntityFramework.MySql` - project that contains migrations for MySql
 
-  - `Skoruba.IdentityServer4.Admin.EntityFramework.PostgreSQL` - project that contains migrations for PostgreSQL
+  - `Skoruba.IdentityServer8.Admin.EntityFramework.PostgreSQL` - project that contains migrations for PostgreSQL
 
 - Tests:
 
-  - `Skoruba.IdentityServer4.Admin.IntegrationTests` - xUnit project that contains the integration tests for AdminUI
+  - `Skoruba.IdentityServer8.Admin.IntegrationTests` - xUnit project that contains the integration tests for AdminUI
 
-  - `Skoruba.IdentityServer4.Admin.Api.IntegrationTests` - xUnit project that contains the integration tests for AdminUI Api
+  - `Skoruba.IdentityServer8.Admin.Api.IntegrationTests` - xUnit project that contains the integration tests for AdminUI Api
 
-  - `Skoruba.IdentityServer4.Admin.UnitTests` - xUnit project that contains the unit tests for AdminUI
+  - `Skoruba.IdentityServer8.Admin.UnitTests` - xUnit project that contains the unit tests for AdminUI
 
-  - `Skoruba.IdentityServer4.STS.IntegrationTests` - xUnit project that contains the integration tests for STS
+  - `Skoruba.IdentityServer8.STS.IntegrationTests` - xUnit project that contains the integration tests for STS
 
 ### The admininistration contains the following sections:
 
-![Skoruba.IdentityServer4.Admin App](docs/Images/Skoruba.IdentityServer4.Admin-Solution.png)
+![Skoruba.IdentityServer8.Admin App](docs/Images/Skoruba.IdentityServer8.Admin-Solution.png)
 
-## IdentityServer4
+## IdentityServer8
 
 **Clients**
 
@@ -718,7 +718,7 @@ It is possible to define the configuration according the client type - by defaul
 
 ## Application Diagram
 
-![Skoruba.IdentityServer4.Admin Diagram](docs/Images/Skoruba.IdentityServer4.Admin-App-Diagram.png)
+![Skoruba.IdentityServer8.Admin Diagram](docs/Images/Skoruba.IdentityServer8.Admin-App-Diagram.png)
 
 ## Roadmap & Vision
 
@@ -726,7 +726,7 @@ It is possible to define the configuration according the client type - by defaul
 
 - [x] Create the Business Logic & EF layers - available as a nuget package
 - [x] Create a project template using dotnet CLI - `dotnet new template`
-  - [x] First template: The administration of the IdentityServer4 and Asp.Net Core Identity
+  - [x] First template: The administration of the IdentityServer8 and Asp.Net Core Identity
 - [x] Add logging into
   - [x] Database
   - [x] File
@@ -749,36 +749,36 @@ It is possible to define the configuration according the client type - by defaul
 - [x] Email service
   - [x] SendGrid
 - [x] Add API
-  - [x] IdentityServer4
+  - [x] IdentityServer8
   - [x] Asp.Net Core Identity
   - [x] Add swagger support
-- [x] Add audit logs to track changes ([#61](https://github.com/skoruba/IdentityServer4.Admin/issues/61))
-- [x] Docker support ([#121](https://github.com/skoruba/IdentityServer4.Admin/issues/121))
+- [x] Add audit logs to track changes ([#61](https://github.com/skoruba/IdentityServer8.Admin/issues/61))
+- [x] Docker support ([#121](https://github.com/skoruba/IdentityServer8.Admin/issues/121))
 - [x] Health Checks (Databases and IdentityServer)
 - [x] Support for multiple database providers (SqlServer, Mysql, PostgreSQL)
-- [x] Simplify Admin Identity middleware ([#430](https://github.com/skoruba/IdentityServer4.Admin/issues/430))
-- [x] Add support for loading signing key from Azure Key Vault ([#533](https://github.com/skoruba/IdentityServer4.Admin/issues/533))
-- [x] Protect keys for dataprotection from Azure Key Vault ([#715](https://github.com/skoruba/IdentityServer4.Admin/pull/715))
+- [x] Simplify Admin Identity middleware ([#430](https://github.com/skoruba/IdentityServer8.Admin/issues/430))
+- [x] Add support for loading signing key from Azure Key Vault ([#533](https://github.com/skoruba/IdentityServer8.Admin/issues/533))
+- [x] Protect keys for dataprotection from Azure Key Vault ([#715](https://github.com/skoruba/IdentityServer8.Admin/pull/715))
 
 ### 2.0.0
 
-- [x] Update to IdentityServer4 version 4 ([#633](https://github.com/skoruba/IdentityServer4.Admin/issues/633))
-- [x] Add support for themes ([#725](https://github.com/skoruba/IdentityServer4.Admin/issues/725))
-- [x] Extract UI part into nuget package ([#770](https://github.com/skoruba/IdentityServer4.Admin/issues/770), [#409](https://github.com/skoruba/IdentityServer4.Admin/issues/409), [#55](https://github.com/skoruba/IdentityServer4.Admin/issues/55), [#322](https://github.com/skoruba/IdentityServer4.Admin/issues/322), [#28](https://github.com/skoruba/IdentityServer4.Admin/issues/28), [#133](https://github.com/skoruba/IdentityServer4.Admin/issues/133))
+- [x] Update to IdentityServer8 version 4 ([#633](https://github.com/skoruba/IdentityServer8.Admin/issues/633))
+- [x] Add support for themes ([#725](https://github.com/skoruba/IdentityServer8.Admin/issues/725))
+- [x] Extract UI part into nuget package ([#770](https://github.com/skoruba/IdentityServer8.Admin/issues/770), [#409](https://github.com/skoruba/IdentityServer8.Admin/issues/409), [#55](https://github.com/skoruba/IdentityServer8.Admin/issues/55), [#322](https://github.com/skoruba/IdentityServer8.Admin/issues/322), [#28](https://github.com/skoruba/IdentityServer8.Admin/issues/28), [#133](https://github.com/skoruba/IdentityServer8.Admin/issues/133))
 
 ### 3.0.0
 
-- [ ] Connect Admin Api to the Admin UI ([#478](https://github.com/skoruba/IdentityServer4.Admin/issues/478))
+- [ ] Connect Admin Api to the Admin UI ([#478](https://github.com/skoruba/IdentityServer8.Admin/issues/478))
 
 ### 4.0.0:
 
 - [ ] Create a project template using dotnet CLI - `dotnet new template`
-  - [ ] Second template: The administration of the IdentityServer4 (without Asp.Net Core Identity) ([#79](https://github.com/skoruba/IdentityServer4.Admin/issues/79))
-- [ ] Add windows authentication ([#479](https://github.com/skoruba/IdentityServer4.Admin/issues/479))
+  - [ ] Second template: The administration of the IdentityServer8 (without Asp.Net Core Identity) ([#79](https://github.com/skoruba/IdentityServer8.Admin/issues/79))
+- [ ] Add windows authentication ([#479](https://github.com/skoruba/IdentityServer8.Admin/issues/479))
 
 ### Future:
 
-- Add UI tests ([#97](https://github.com/skoruba/IdentityServer4.Admin/issues/97), [#116](https://github.com/skoruba/IdentityServer4.Admin/issues/116))
+- Add UI tests ([#97](https://github.com/skoruba/IdentityServer8.Admin/issues/97), [#116](https://github.com/skoruba/IdentityServer8.Admin/issues/116))
 - Add more unit and integration tests :blush:
 - Extend administration for another protocols
 
@@ -786,15 +786,15 @@ It is possible to define the configuration according the client type - by defaul
 
 This repository is licensed under the terms of the [**MIT license**](LICENSE.md).
 
-**NOTE**: This repository uses the source code from https://github.com/IdentityServer/IdentityServer4.Quickstart.UI which is under the terms of the
-[**Apache License 2.0**](https://github.com/IdentityServer/IdentityServer4.Quickstart.UI/blob/master/LICENSE).
+**NOTE**: This repository uses the source code from https://github.com/IdentityServer/IdentityServer8.Quickstart.UI which is under the terms of the
+[**Apache License 2.0**](https://github.com/IdentityServer/IdentityServer8.Quickstart.UI/blob/master/LICENSE).
 
 ## Acknowledgements
 
 This web application is based on these projects:
 
 - ASP.NET Core
-- IdentityServer4.EntityFramework
+- IdentityServer8.EntityFramework
 - ASP.NET Core Identity
 - XUnit
 - Fluent Assertions
@@ -804,7 +804,7 @@ This web application is based on these projects:
 
 Thanks to [Tomáš Hübelbauer](https://github.com/TomasHubelbauer) for the initial code review.
 
-Thanks to [Dominick Baier](https://github.com/leastprivilege) and [Brock Allen](https://github.com/brockallen) - the creators of IdentityServer4.
+Thanks to [Dominick Baier](https://github.com/leastprivilege) and [Brock Allen](https://github.com/brockallen) - the creators of IdentityServer8.
 
 ## Contributors
 
@@ -827,7 +827,7 @@ Contributions of any kind are welcome!
 
 ## Contact and Suggestion
 
-I am happy to share my attempt of the implementation of the administration for IdentityServer4 and ASP.NET Core Identity.
+I am happy to share my attempt of the implementation of the administration for IdentityServer8 and ASP.NET Core Identity.
 
 Any feedback is welcome - feel free to create an issue or send me an email - [jan@skoruba.com](mailto:jan@skoruba.com). Thank you :blush:
 

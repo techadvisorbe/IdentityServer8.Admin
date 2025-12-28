@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Account
+namespace SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Account
 {
     public class RegisterWithoutUsernameViewModel
     {

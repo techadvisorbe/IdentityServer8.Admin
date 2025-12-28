@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.PostgreSQL.Migrations.Identity
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.PostgreSQL.Migrations.Identity
 {
     public partial class DbInit : Migration
     {

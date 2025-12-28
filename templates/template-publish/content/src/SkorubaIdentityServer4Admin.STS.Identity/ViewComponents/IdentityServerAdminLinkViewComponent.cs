@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration.Interfaces;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration.Interfaces;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.ViewComponents
+namespace SkorubaIdentityServer8Admin.STS.Identity.ViewComponents
 {
     public class IdentityServerAdminLinkViewComponent : ViewComponent
     {

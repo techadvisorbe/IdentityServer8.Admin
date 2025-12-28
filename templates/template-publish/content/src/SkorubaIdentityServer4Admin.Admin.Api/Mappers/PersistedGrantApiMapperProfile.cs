@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using SkorubaIdentityServer4Admin.Admin.Api.Dtos.PersistedGrants;
-using Skoruba.IdentityServer4.Admin.BusinessLogic.Dtos.Grant;
+using SkorubaIdentityServer8Admin.Admin.Api.Dtos.PersistedGrants;
+using Skoruba.IdentityServer8.Admin.BusinessLogic.Dtos.Grant;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Mappers
+namespace SkorubaIdentityServer8Admin.Admin.Api.Mappers
 {
     public class PersistedGrantApiMapperProfile : Profile
     {

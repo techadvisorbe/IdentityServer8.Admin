@@ -1,4 +1,4 @@
-﻿namespace SkorubaIdentityServer4Admin.Admin.Api.Configuration
+﻿namespace SkorubaIdentityServer8Admin.Admin.Api.Configuration
 {
     public class AuditLoggingConfiguration
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.SqlServer.Migrations.IdentityServerConfiguration
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.SqlServer.Migrations.IdentityServerConfiguration
 {
     public partial class DbInit : Migration
     {

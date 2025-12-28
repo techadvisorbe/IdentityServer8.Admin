@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SkorubaIdentityServer4Admin.Admin.Configuration.Test
+namespace SkorubaIdentityServer8Admin.Admin.Configuration.Test
 {
 	public class StartupTest : Startup
     {
@@ -10,7 +10,7 @@ namespace SkorubaIdentityServer4Admin.Admin.Configuration.Test
         {
         }
 
-        public override void ConfigureUIOptions(IdentityServer4AdminUIOptions options)
+        public override void ConfigureUIOptions(IdentityServer8AdminUIOptions options)
         {
             base.ConfigureUIOptions(options);
 

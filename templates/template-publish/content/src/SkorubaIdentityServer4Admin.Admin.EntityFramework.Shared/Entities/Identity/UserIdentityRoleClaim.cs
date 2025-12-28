@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.Entities.Identity
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.Entities.Identity
 {
     public class UserIdentityRoleClaim : IdentityRoleClaim<string>
     {

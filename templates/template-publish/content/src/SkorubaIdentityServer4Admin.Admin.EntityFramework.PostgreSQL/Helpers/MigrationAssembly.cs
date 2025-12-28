@@ -1,4 +1,4 @@
-﻿namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.PostgreSQL.Helpers
+﻿namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.PostgreSQL.Helpers
 {
     public class MigrationAssembly
     {

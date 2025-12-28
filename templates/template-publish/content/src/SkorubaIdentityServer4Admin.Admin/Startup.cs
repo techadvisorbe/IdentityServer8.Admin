@@ -7,15 +7,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Skoruba.AuditLogging.EntityFramework.Entities;
-using SkorubaIdentityServer4Admin.Admin.Configuration.Database;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.DbContexts;
-using SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.Entities.Identity;
-using SkorubaIdentityServer4Admin.Admin.Helpers;
-using Skoruba.IdentityServer4.Shared.Configuration.Helpers;
-using SkorubaIdentityServer4Admin.Shared.Dtos;
-using SkorubaIdentityServer4Admin.Shared.Dtos.Identity;
+using SkorubaIdentityServer8Admin.Admin.Configuration.Database;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.DbContexts;
+using SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.Entities.Identity;
+using SkorubaIdentityServer8Admin.Admin.Helpers;
+using Skoruba.IdentityServer8.Shared.Configuration.Helpers;
+using SkorubaIdentityServer8Admin.Shared.Dtos;
+using SkorubaIdentityServer8Admin.Shared.Dtos.Identity;
 
-namespace SkorubaIdentityServer4Admin.Admin
+namespace SkorubaIdentityServer8Admin.Admin
 {
     public class Startup
     {
@@ -32,8 +32,8 @@ namespace SkorubaIdentityServer4Admin.Admin
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Adds the IdentityServer4 Admin UI with custom options.
-            services.AddIdentityServer4AdminUI<AdminIdentityDbContext, IdentityServerConfigurationDbContext, IdentityServerPersistedGrantDbContext,
+            // Adds the IdentityServer8 Admin UI with custom options.
+            services.AddIdentityServer8AdminUI<AdminIdentityDbContext, IdentityServerConfigurationDbContext, IdentityServerPersistedGrantDbContext,
             AdminLogDbContext, AdminAuditLogDbContext, AuditLog, IdentityServerDataProtectionDbContext,
                 UserIdentity, UserIdentityRole, UserIdentityUserClaim, UserIdentityUserRole,
                 UserIdentityUserLogin, UserIdentityRoleClaim, UserIdentityUserToken, string,
@@ -52,16 +52,16 @@ namespace SkorubaIdentityServer4Admin.Admin
         {
             app.UseRouting();
 
-            app.UseIdentityServer4AdminUI();
+            app.UseIdentityServer8AdminUI();
 
             app.UseEndpoints(endpoint =>
             {
-                endpoint.MapIdentityServer4AdminUI();
-                endpoint.MapIdentityServer4AdminUIHealthChecks();
+                endpoint.MapIdentityServer8AdminUI();
+                endpoint.MapIdentityServer8AdminUIHealthChecks();
             });
         }
 
-        public virtual void ConfigureUIOptions(IdentityServer4AdminUIOptions options)
+        public virtual void ConfigureUIOptions(IdentityServer8AdminUIOptions options)
         {
             // Applies configuration from appsettings.
             options.BindConfiguration(Configuration);

@@ -1,4 +1,4 @@
-﻿namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.SqlServer.Helpers
+﻿namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.SqlServer.Helpers
 {
     public class MigrationAssembly
     {

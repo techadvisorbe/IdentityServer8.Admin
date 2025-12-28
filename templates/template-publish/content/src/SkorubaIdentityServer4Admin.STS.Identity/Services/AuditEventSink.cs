@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using IdentityServer4.Events;
-using IdentityServer4.Services;
+using IdentityServer8.Events;
+using IdentityServer8.Services;
 using Microsoft.Extensions.Logging;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Services
+namespace SkorubaIdentityServer8Admin.STS.Identity.Services
 {
     public class AuditEventSink : DefaultEventSink
     {

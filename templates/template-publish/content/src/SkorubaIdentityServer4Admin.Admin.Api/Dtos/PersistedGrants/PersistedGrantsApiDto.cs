@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Dtos.PersistedGrants
+namespace SkorubaIdentityServer8Admin.Admin.Api.Dtos.PersistedGrants
 {
     public class PersistedGrantsApiDto
     {

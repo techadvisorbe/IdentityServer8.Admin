@@ -1,17 +1,17 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-// Original file: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
+// Original file: https://github.com/IdentityServer/IdentityServer8.Quickstart.UI
 // Modified by Jan �koruba
 
 using System;
 using System.Threading.Tasks;
-using IdentityServer4.Models;
-using IdentityServer4.Stores;
+using IdentityServer8.Models;
+using IdentityServer8.Stores;
 using Microsoft.AspNetCore.Mvc;
-using SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Account;
+using SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Account;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Helpers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Helpers
 {
     public static class Extensions
     {

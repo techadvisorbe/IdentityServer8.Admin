@@ -6,16 +6,16 @@ using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SkorubaIdentityServer4Admin.Admin.Api.Configuration.Constants;
-using SkorubaIdentityServer4Admin.Admin.Api.Dtos.Roles;
-using SkorubaIdentityServer4Admin.Admin.Api.Dtos.Users;
-using SkorubaIdentityServer4Admin.Admin.Api.ExceptionHandling;
-using SkorubaIdentityServer4Admin.Admin.Api.Helpers.Localization;
-using SkorubaIdentityServer4Admin.Admin.Api.Resources;
-using Skoruba.IdentityServer4.Admin.BusinessLogic.Identity.Dtos.Identity;
-using Skoruba.IdentityServer4.Admin.BusinessLogic.Identity.Services.Interfaces;
+using SkorubaIdentityServer8Admin.Admin.Api.Configuration.Constants;
+using SkorubaIdentityServer8Admin.Admin.Api.Dtos.Roles;
+using SkorubaIdentityServer8Admin.Admin.Api.Dtos.Users;
+using SkorubaIdentityServer8Admin.Admin.Api.ExceptionHandling;
+using SkorubaIdentityServer8Admin.Admin.Api.Helpers.Localization;
+using SkorubaIdentityServer8Admin.Admin.Api.Resources;
+using Skoruba.IdentityServer8.Admin.BusinessLogic.Identity.Dtos.Identity;
+using Skoruba.IdentityServer8.Admin.BusinessLogic.Identity.Services.Interfaces;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Controllers
+namespace SkorubaIdentityServer8Admin.Admin.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

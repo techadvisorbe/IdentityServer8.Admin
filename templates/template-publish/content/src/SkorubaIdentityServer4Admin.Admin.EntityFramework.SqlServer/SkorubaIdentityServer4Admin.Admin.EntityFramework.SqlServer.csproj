@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFramework>net8.0</TargetFramework>
-	  <Description>Entity Framework layer for the administration of the IdentityServer4 and Asp.Net Core Identity with SqlServer support</Description>
+	  <Description>Entity Framework layer for the administration of the IdentityServer8 and Asp.Net Core Identity with SqlServer support</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared\SkorubaIdentityServer4Admin.Admin.EntityFramework.Shared.csproj" />
+    <ProjectReference Include="..\SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared\SkorubaIdentityServer8Admin.Admin.EntityFramework.Shared.csproj" />
   </ItemGroup>
 
 </Project>

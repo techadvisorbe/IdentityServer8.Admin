@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.MySql.Migrations.DataProtection
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.MySql.Migrations.DataProtection
 {
     public partial class AddDataProtection : Migration
     {

@@ -11,11 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers.Localization;
-using SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Manage;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers.Localization;
+using SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Manage;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Controllers
 {    
     [Authorize]
     public class ManageController<TUser, TKey> : Controller
@@ -701,7 +701,7 @@ namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("SkorubaIdentityServer4Admin.STS.Identity"),
+                _urlEncoder.Encode("SkorubaIdentityServer8Admin.STS.Identity"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

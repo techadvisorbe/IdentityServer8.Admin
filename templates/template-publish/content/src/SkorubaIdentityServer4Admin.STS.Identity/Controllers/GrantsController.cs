@@ -1,22 +1,22 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-// Original file: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
-// Modified by Jan Škoruba
+// Original file: https://github.com/IdentityServer/IdentityServer8.Quickstart.UI
+// Modified by Jan Škoruba , Abdelilah El mansouri
 
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4.Events;
-using IdentityServer4.Extensions;
-using IdentityServer4.Services;
-using IdentityServer4.Stores;
+using IdentityServer8.Events;
+using IdentityServer8.Extensions;
+using IdentityServer8.Services;
+using IdentityServer8.Stores;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers;
-using SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Grants;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers;
+using SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Grants;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Controllers
 {
     /// <summary>
     /// This sample controller allows a user to revoke grants given to clients

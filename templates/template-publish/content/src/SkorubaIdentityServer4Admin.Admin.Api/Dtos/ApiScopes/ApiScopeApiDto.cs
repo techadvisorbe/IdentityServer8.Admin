@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Dtos.ApiScopes
+namespace SkorubaIdentityServer8Admin.Admin.Api.Dtos.ApiScopes
 {
     public class ApiScopeApiDto
     {

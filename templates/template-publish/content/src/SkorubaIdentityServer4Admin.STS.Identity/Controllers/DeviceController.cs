@@ -1,29 +1,29 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-// Original file: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
+// Original file: https://github.com/IdentityServer/IdentityServer8.Quickstart.UI
 // Modified by Jan �koruba
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4.Configuration;
-using IdentityServer4.Events;
-using IdentityServer4.Extensions;
-using IdentityServer4.Models;
-using IdentityServer4.Services;
-using IdentityServer4.Validation;
+using IdentityServer8.Configuration;
+using IdentityServer8.Events;
+using IdentityServer8.Extensions;
+using IdentityServer8.Models;
+using IdentityServer8.Services;
+using IdentityServer8.Validation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers;
-using SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Consent;
-using SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Device;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers;
+using SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Consent;
+using SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Device;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Controllers
 {
     [Authorize]
     [SecurityHeaders]
@@ -108,7 +108,7 @@ namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
                     var scopes = model.ScopesConsented;
                     if (ConsentOptions.EnableOfflineAccess == false)
                     {
-                        scopes = scopes.Where(x => x != global::IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess);
+                        scopes = scopes.Where(x => x != global::IdentityServer8.IdentityServerConstants.StandardScopes.OfflineAccess);
                     }
 
                     grantedConsent = new ConsentResponse
@@ -190,7 +190,7 @@ namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
             }
             if (ConsentOptions.EnableOfflineAccess && request.ValidatedResources.Resources.OfflineAccess)
             {
-                apiScopes.Add(GetOfflineAccessScope(vm.ScopesConsented.Contains(global::IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null));
+                apiScopes.Add(GetOfflineAccessScope(vm.ScopesConsented.Contains(global::IdentityServer8.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null));
             }
             vm.ApiScopes = apiScopes;
 
@@ -227,7 +227,7 @@ namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
         {
             return new ScopeViewModel
             {
-                Value = global::IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess,
+                Value = global::IdentityServer8.IdentityServerConstants.StandardScopes.OfflineAccess,
                 DisplayName = ConsentOptions.OfflineAccessDisplayName,
                 Description = ConsentOptions.OfflineAccessDescription,
                 Emphasize = true,

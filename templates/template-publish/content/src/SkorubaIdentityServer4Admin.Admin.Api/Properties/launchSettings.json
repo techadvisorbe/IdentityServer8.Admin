@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "SkorubaIdentityServer4Admin.Admin.Api": {
+    "SkorubaIdentityServer8Admin.Admin.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

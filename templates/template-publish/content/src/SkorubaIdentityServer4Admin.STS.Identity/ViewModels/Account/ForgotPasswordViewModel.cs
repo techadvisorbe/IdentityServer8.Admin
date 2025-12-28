@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Skoruba.IdentityServer4.Shared.Configuration.Configuration.Identity;
+using Skoruba.IdentityServer8.Shared.Configuration.Configuration.Identity;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Account
+namespace SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Account
 {
     public class ForgotPasswordViewModel
     {

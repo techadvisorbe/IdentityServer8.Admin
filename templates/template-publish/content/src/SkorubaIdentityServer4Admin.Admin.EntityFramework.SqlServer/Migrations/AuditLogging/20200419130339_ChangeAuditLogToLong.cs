@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SkorubaIdentityServer4Admin.Admin.EntityFramework.SqlServer.Migrations.AuditLogging
+namespace SkorubaIdentityServer8Admin.Admin.EntityFramework.SqlServer.Migrations.AuditLogging
 {
     public partial class ChangeAuditLogToLong : Migration
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SkorubaIdentityServer4Admin.Admin.Api.Resources {
+namespace SkorubaIdentityServer8Admin.Admin.Api.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SkorubaIdentityServer4Admin.Admin.Api.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SkorubaIdentityServer4Admin.Admin.Api.Resources.ApiErrorResource", typeof(ApiErrorResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SkorubaIdentityServer8Admin.Admin.Api.Resources.ApiErrorResource", typeof(ApiErrorResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

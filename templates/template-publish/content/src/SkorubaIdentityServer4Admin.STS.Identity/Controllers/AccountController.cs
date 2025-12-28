@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-// Original file: https://github.com/IdentityServer/IdentityServer4.Samples
-// Modified by Jan Škoruba
+// Original file: https://github.com/IdentityServer/IdentityServer8.Samples
+// Modified by Jan Škoruba , Abdelilah El mansouri
 
 using System;
 using System.Linq;
@@ -11,12 +11,12 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using IdentityModel;
-using IdentityServer4;
-using IdentityServer4.Events;
-using IdentityServer4.Extensions;
-using IdentityServer4.Models;
-using IdentityServer4.Services;
-using IdentityServer4.Stores;
+using IdentityServer8;
+using IdentityServer8.Events;
+using IdentityServer8.Extensions;
+using IdentityServer8.Models;
+using IdentityServer8.Services;
+using IdentityServer8.Stores;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -24,13 +24,13 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using Skoruba.IdentityServer4.Shared.Configuration.Configuration.Identity;
-using SkorubaIdentityServer4Admin.STS.Identity.Configuration;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers;
-using SkorubaIdentityServer4Admin.STS.Identity.Helpers.Localization;
-using SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Account;
+using Skoruba.IdentityServer8.Shared.Configuration.Configuration.Identity;
+using SkorubaIdentityServer8Admin.STS.Identity.Configuration;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers;
+using SkorubaIdentityServer8Admin.STS.Identity.Helpers.Localization;
+using SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Account;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.Controllers
+namespace SkorubaIdentityServer8Admin.STS.Identity.Controllers
 {
     [SecurityHeaders]
     [Authorize]

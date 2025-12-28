@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 
-namespace SkorubaIdentityServer4Admin.STS.Identity.ViewModels.Manage
+namespace SkorubaIdentityServer8Admin.STS.Identity.ViewModels.Manage
 {
     public class ExternalLoginsViewModel
     {

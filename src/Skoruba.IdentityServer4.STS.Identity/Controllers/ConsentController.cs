@@ -2,17 +2,17 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 // Original file: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
-// Modified by Jan Škoruba
+// Modified by Jan ï¿½koruba
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4.Events;
-using IdentityServer4.Extensions;
-using IdentityServer4.Models;
-using IdentityServer4.Services;
-using IdentityServer4.Validation;
+using IdentityServer8.Events;
+using IdentityServer8.Extensions;
+using IdentityServer8.Models;
+using IdentityServer8.Services;
+using IdentityServer8.Validation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -125,7 +125,7 @@ namespace Skoruba.IdentityServer4.STS.Identity.Controllers
                     var scopes = model.ScopesConsented;
                     if (ConsentOptions.EnableOfflineAccess == false)
                     {
-                        scopes = scopes.Where(x => x != global::IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess);
+                        scopes = scopes.Where(x => x != global::IdentityServer8.IdentityServerConstants.StandardScopes.OfflineAccess);
                     }
 
                     grantedConsent = new ConsentResponse
@@ -213,7 +213,7 @@ namespace Skoruba.IdentityServer4.STS.Identity.Controllers
             }
             if (ConsentOptions.EnableOfflineAccess && request.ValidatedResources.Resources.OfflineAccess)
             {
-                apiScopes.Add(GetOfflineAccessScope(vm.ScopesConsented.Contains(global::IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null));
+                apiScopes.Add(GetOfflineAccessScope(vm.ScopesConsented.Contains(global::IdentityServer8.IdentityServerConstants.StandardScopes.OfflineAccess) || model == null));
             }
             vm.ApiScopes = apiScopes;
 
@@ -256,7 +256,7 @@ namespace Skoruba.IdentityServer4.STS.Identity.Controllers
         {
             return new ScopeViewModel
             {
-                Value = global::IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess,
+                Value = global::IdentityServer8.IdentityServerConstants.StandardScopes.OfflineAccess,
                 DisplayName = ConsentOptions.OfflineAccessDisplayName,
                 Description = ConsentOptions.OfflineAccessDescription,
                 Emphasize = true,

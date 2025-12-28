@@ -1,4 +1,4 @@
-﻿using IdentityServer4.EntityFramework.Options;
+﻿using IdentityServer8.EntityFramework.Options;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -455,7 +455,7 @@ namespace Skoruba.IdentityServer4.Admin.UI.Helpers
                 .AddDbContextCheck<TAuditLoggingDbContext>("AuditLogDbContext")
                 .AddDbContextCheck<TDataProtectionDbContext>("DataProtectionDbContext")
 
-                .AddIdentityServer(new Uri(identityServerUri), "Identity Server");
+                .AddOpenIdConnectServer(new Uri(identityServerUri), name : "Identity Server");
 
             var serviceProvider = healthChecksBuilder.Services.BuildServiceProvider();
             var scopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();

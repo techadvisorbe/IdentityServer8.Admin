@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using IdentityServer4.EntityFramework.Entities;
-using IdentityServer4.Models;
+using IdentityServer8.EntityFramework.Entities;
+using IdentityServer8.Models;
 using Microsoft.EntityFrameworkCore;
 using Skoruba.IdentityServer4.Admin.EntityFramework.Constants;
 using Skoruba.IdentityServer4.Admin.EntityFramework.Extensions.Common;
@@ -13,8 +13,8 @@ using Skoruba.IdentityServer4.Admin.EntityFramework.Extensions.Extensions;
 using Skoruba.IdentityServer4.Admin.EntityFramework.Helpers;
 using Skoruba.IdentityServer4.Admin.EntityFramework.Interfaces;
 using Skoruba.IdentityServer4.Admin.EntityFramework.Repositories.Interfaces;
-using Client = IdentityServer4.EntityFramework.Entities.Client;
-using ClientClaim = IdentityServer4.EntityFramework.Entities.ClientClaim;
+using Client = IdentityServer8.EntityFramework.Entities.Client;
+using ClientClaim = IdentityServer8.EntityFramework.Entities.ClientClaim;
 
 namespace Skoruba.IdentityServer4.Admin.EntityFramework.Repositories
 {

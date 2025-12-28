@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bogus;
-using IdentityServer4.EntityFramework.Entities;
+using IdentityServer8.EntityFramework.Entities;
 
 namespace Skoruba.IdentityServer4.Admin.UnitTests.Mocks
 {

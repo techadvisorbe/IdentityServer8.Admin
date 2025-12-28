@@ -1,8 +1,8 @@
 
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4.Models;
-using IdentityServer4.Validation;
+using IdentityServer8.Models;
+using IdentityServer8.Validation;
 
 namespace Skoruba.IdentityServer4.STS.Identity.Helpers
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using IdentityServer4.EntityFramework.Options;
+using IdentityServer8.EntityFramework.Options;
 using Microsoft.EntityFrameworkCore;
 using Skoruba.IdentityServer4.Admin.EntityFramework.Identity.Repositories;
 using Skoruba.IdentityServer4.Admin.EntityFramework.Identity.Repositories.Interfaces;

@@ -1,6 +1,6 @@
 ﻿using System;
 using IdentityModel;
-using IdentityServer4.EntityFramework.Options;
+using IdentityServer8.EntityFramework.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
@@ -30,6 +30,7 @@ using Skoruba.IdentityServer4.Admin.EntityFramework.Interfaces;
 
 namespace Skoruba.IdentityServer4.Admin.Api.Helpers
 {
+    
     public static class StartupHelpers
     {
         public static IServiceCollection AddAuditEventLogging<TAuditLoggingDbContext, TAuditLog>(
@@ -280,7 +281,7 @@ namespace Skoruba.IdentityServer4.Admin.Api.Helpers
                 .AddDbContextCheck<TLogDbContext>("LogDbContext")
                 .AddDbContextCheck<TAuditLoggingDbContext>("AuditLogDbContext")
                 .AddDbContextCheck<TDataProtectionDbContext>("DataProtectionDbContext")
-                .AddIdentityServer(new Uri(identityServerUri), "Identity Server");
+                .AddOpenIdConnectServer(new Uri(identityServerUri) , name: "Identity Server");
 
             var serviceProvider = services.BuildServiceProvider();
             var scopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();

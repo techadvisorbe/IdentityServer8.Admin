@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HigginsSoft.IdentityServer8.EntityFramework" Version="8.0.4" />
+    <PackageReference Include="TechAdvisor.IdentityServer8.EntityFramework" Version="8.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.9" />
     <PackageReference Include="Skoruba.AuditLogging.EntityFramework" Version="2.0.0" />
   </ItemGroup>

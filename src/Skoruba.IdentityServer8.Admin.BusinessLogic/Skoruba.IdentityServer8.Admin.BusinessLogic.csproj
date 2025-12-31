@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HigginsSoft.IdentityServer8.EntityFramework" Version="8.0.4" />
+    <PackageReference Include="TechAdvisor.IdentityServer8.EntityFramework" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>

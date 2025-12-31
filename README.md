@@ -4,17 +4,6 @@
 
 > The administration for the IdentityServer8 and Asp.Net Core Identity
 
-### Need help migrating?
-
-If you need any assistance migrating to **Duende IdentityServer**, feel free to reach out:
-- **Email:** [jan.skoruba@gmail.com](mailto:jan.skoruba@gmail.com)
-- **Social media:** Connect with me directly!  
-
-Looking forward to seeing you in the new repository. 🚀
-
-Cheers,  
-**Jan Skoruba ❤️**
-
 ## Requirements
 
 - [Install](https://www.microsoft.com/net/download/windows#/current) the latest .NET 8 SDK (using older versions may lead to 502.5 errors when hosted on IIS or application exiting immediately after starting when self-hosted)

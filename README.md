@@ -4,20 +4,6 @@
 
 > The administration for the IdentityServer8 and Asp.Net Core Identity
 
-## Big Thanks 🙏🏻 and an Update on the Project ⚡️
-
-I just want to say a huge **THANK YOU** to everyone who has contributed to **IdentityServer8.Admin** over the years. Reaching almost **4,000 stars** ⭐️ on GitHub has been such an incredible milestone, and it is all thanks to this **amazing community**. I truly could not have done it without you.
-
-With the end of support for **.NET 6** and **IdentityServer8**, I have made the decision to **stop maintaining this repository**.
-
-### But do not worry—this is not goodbye!
-
-I am excited to introduce my new project: [**Duende IdentityServer Admin**](https://github.com/skoruba/Duende.IdentityServer.Admin).
-
-This is the next evolution of this project and is **fully supported**. I would love for you to **check it out** and join me on this journey. 😊
-
-Thanks again for everything—your contributions, feedback, and support have meant so much to me. I hope to see you over on the new project!
-
 ### Need help migrating?
 
 If you need any assistance migrating to **Duende IdentityServer**, feel free to reach out:
@@ -29,11 +15,9 @@ Looking forward to seeing you in the new repository. 🚀
 Cheers,  
 **Jan Skoruba ❤️**
 
-## 🎉 New version of Duende IdentityServer Admin UI available [here](https://github.com/skoruba/Duende.IdentityServer.Admin) ⚡
-
 ## Requirements
 
-- [Install](https://www.microsoft.com/net/download/windows#/current) the latest .NET 6 SDK (using older versions may lead to 502.5 errors when hosted on IIS or application exiting immediately after starting when self-hosted)
+- [Install](https://www.microsoft.com/net/download/windows#/current) the latest .NET 8 SDK (using older versions may lead to 502.5 errors when hosted on IIS or application exiting immediately after starting when self-hosted)
 
 ## Installation via dotnet new template
 

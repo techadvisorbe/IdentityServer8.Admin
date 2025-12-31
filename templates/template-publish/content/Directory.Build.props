@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <Version>2.1.0</Version>
-    <Authors>Jan Škoruba</Authors>
+    <Authors>Jan Škoruba, Abdelilah El mansouri</Authors>
     <LangVersion>latest</LangVersion>
     <PackageTags>IdentityServer8 Admin OpenIDConnect OAuth2 Identity</PackageTags>
-    <PackageProjectUrl>https://github.com/skoruba/IdentityServer8.Admin</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/techadvisorbe/IdentityServer8.Admin</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>

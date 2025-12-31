@@ -45,7 +45,7 @@ Project template options:
 
 ### Template uses following list of nuget packages
 
-- [Available nuget packages](https://www.nuget.org/profiles/skoruba)
+- [Available nuget packages](https://www.nuget.org/profiles/techadvisor)
 
 ### Running in Visual Studio
 

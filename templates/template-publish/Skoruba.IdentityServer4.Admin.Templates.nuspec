@@ -3,7 +3,7 @@
   <metadata>
     <id>Skoruba.IdentityServer8.Admin.Templates</id>
     <version>2.1.0</version>
-    <authors>Jan Škoruba</authors>
+    <authors>Jan Škoruba, Abdelilah El mansouri</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="file">LICENSE.md</license>
     <projectUrl>https://github.com/skoruba/IdentityServer8.Admin</projectUrl>

@@ -127,7 +127,7 @@ dotnet.exe new -i $templateLocalName
 ######################################
 # Step 4
 # Create template for fixing project name
-dotnet new skoruba.is4admin --name SkorubaIdentityServer8Admin --title "Skoruba IdentityServer8 Admin" --adminrole SkorubaIdentityAdminAdministrator --adminclientid skoruba_identity_admin --adminclientsecret skoruba_admin_client_secret
+dotnet new skoruba.is8admin --name SkorubaIdentityServer8Admin --title "Skoruba IdentityServer8 Admin" --adminrole SkorubaIdentityAdminAdministrator --adminclientid skoruba_identity_admin --adminclientsecret skoruba_admin_client_secret
 
 ######################################
 # Step 5

@@ -9,7 +9,7 @@
   "name": "Skoruba IdentityServer8 Admin",
   "identity": "Skoruba.IdentityServer8.Admin",
   "groupIdentity": "Skoruba.IdentityServer8.Admin",
-  "shortName": "skoruba.is4admin",
+  "shortName": "skoruba.is8admin",
   "tags": {
     "language": "C#",
     "type": "project"

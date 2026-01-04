@@ -18,7 +18,7 @@ This project is a community-driven port of [Skoruba.IdentityServer4.Admin](https
 
 - Install the dotnet new template:
 
-### Version 2.0.0 and higher works with **IdentityServer8 version 4** 🚀
+### Version 8.0.0 and higher works with **IdentityServer8** 🚀
 
 - 🔒 **NOTE:** This version affects your database data if you use the default database migrations that are part of the project - double check the migrations according to your database provider and create a database backup
 
@@ -634,9 +634,6 @@ Integration tests use StartupTest class which is pre-configured with:
 
   - `TechAdvisor.IdentityServer8.STS.IntegrationTests` - xUnit project that contains the integration tests for STS
 
-### The admininistration contains the following sections:
-
-![TechAdvisor.IdentityServer8.Admin App](docs/Images/TechAdvisor.IdentityServer8.Admin-Solution.png)
 
 ## IdentityServer8
 
@@ -695,9 +692,6 @@ It is possible to define the configuration according the client type - by defaul
 - Entities:
   - Role Claims
 
-## Application Diagram
-
-![TechAdvisor.IdentityServer8.Admin Diagram](docs/Images/TechAdvisor.IdentityServer8.Admin-App-Diagram.png)
 
 ## Roadmap & Vision
 

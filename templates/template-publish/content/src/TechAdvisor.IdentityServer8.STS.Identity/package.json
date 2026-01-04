@@ -2,7 +2,7 @@
     "version": "8.0.0",
     "name": "techadvisor-identity-server-4-admin-sts",
     "description": "The administration for the IdentityServer8 and Asp.Net Core Identity",
-    "author": "Jan Skoruba & Abdelilah El mansouri (TechAdvisor)",
+    "author": "Jan Skoruba & Abdelilah El mansouri",
     "license": "MIT",
     "private": true,
     "resolutions": {
@@ -17,16 +17,16 @@
         "jquery": "3.5.1",
         "jquery-validation": "^1.19.3",
         "jquery-validation-unobtrusive": "3.2.11",
-        "node-sass": "4.14.1",
         "open-iconic": "1.1.1",
-        "popper.js": "1.16.1"
+        "popper.js": "1.16.1",
+        "sass": "^1.97.1"
     },
     "devDependencies": {
-        "gulp": "4.0.2",
-        "gulp-concat": "2.6.1",
-        "gulp-uglify": "3.0.2",
-        "gulp-sass": "4.1.0",
+        "del": "5.1.0",
+        "gulp": "^5.0.1",
         "gulp-clean-css": "4.3.0",
-        "del": "5.1.0"
+        "gulp-concat": "2.6.1",
+        "gulp-sass": "^6.0.1",
+        "gulp-uglify": "3.0.2"
     }
 }

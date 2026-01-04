@@ -3,6 +3,7 @@
   <PropertyGroup>
 	  <TargetFramework>net8.0</TargetFramework>
 	  <Description>Entity Framework layer for the administration of the IdentityServer8 and Asp.Net Core Identity with PostrgreSQL support</Description>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

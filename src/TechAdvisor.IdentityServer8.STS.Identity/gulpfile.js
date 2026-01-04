@@ -36,7 +36,7 @@ function processScripts() {
 
 function processFonts() {
 	return gulp
-		.src(['./node_modules/font-awesome/fonts/**', './node_modules/open-iconic/font/fonts/**'])
+		.src(['./node_modules/font-awesome/fonts/**', './node_modules/open-iconic/font/fonts/**'], { encoding: false})
 		.pipe(gulp.dest(`${distFolder}fonts/`));
 }
 

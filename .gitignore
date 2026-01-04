@@ -285,3 +285,4 @@ appsettings.*.json
 
 /shared/nginx/certs/
 template-build
+.DS_Store

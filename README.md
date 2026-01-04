@@ -23,7 +23,7 @@ This project is a community-driven port of [Skoruba.IdentityServer4.Admin](https
 - 🔒 **NOTE:** This version affects your database data if you use the default database migrations that are part of the project - double check the migrations according to your database provider and create a database backup
 
 ```sh
-dotnet new -i TechAdvisor.IdentityServer8.Admin.Templates::2.1.0
+dotnet new -i TechAdvisor.IdentityServer8.Admin.Templates::8.0.0
 ```
 
 ### Create new project:
@@ -88,7 +88,7 @@ Project template options:
 ## Cloning
 
 ```sh
-git clone https://github.com/techadvisor/IdentityServer8.Admin
+git clone https://github.com/techadvisorbe/IdentityServer8.Admin
 ```
 
 ## Running via Docker

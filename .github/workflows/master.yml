@@ -60,12 +60,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore TechAdvisor.IdentityServer8.Admin.sln
     - name: Build
-      run: dotnet build TechAdvisor.IdentityServer8.Admin.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SemVer2 }}
+      run: dotnet build TechAdvisor.IdentityServer8.Admin.sln --configuration Release --no-restore -p:Version=RC-${{ steps.nbgv.outputs.SemVer2 }}
     - name: Test
       run: dotnet test TechAdvisor.IdentityServer8.Admin.sln --configuration Release --no-build --verbosity normal /p:CollectCoverage=true --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
     - name: Pack
       if: ${{ (github.event_name == 'push') && (runner.os == 'Windows') }} 
-      run: dotnet pack TechAdvisor.IdentityServer8.Admin.sln --configuration Release --no-restore --no-build --verbosity normal -p:Version=${{ steps.nbgv.outputs.SemVer2 }} -o ./nuget 
+      run: dotnet pack TechAdvisor.IdentityServer8.Admin.sln --configuration Release --no-restore --no-build --verbosity normal -p:Version=RC-${{ steps.nbgv.outputs.SemVer2 }} -o ./nuget 
     - name: Push
       if: ${{ (github.event_name == 'push') && (runner.os == 'Windows') }} 
       run: dotnet nuget push .\nuget\*.nupkg  --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}

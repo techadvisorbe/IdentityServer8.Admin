@@ -1,5 +1,3 @@
-![Logo](docs/Images/TechAdvisor.IdentityServer8.Admin-Logo-ReadMe.png)
-
 # TechAdvisor.IdentityServer8.Admin
 
 > Administration for IdentityServer8 and ASP.NET Core Identity

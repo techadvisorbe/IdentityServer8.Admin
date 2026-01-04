@@ -1,5 +1,5 @@
 {
-    "version": "2.0.0",
+    "version": "8.0.0",
     "name": "techadvisor-identity-server-4-admin-sts",
     "description": "The administration for the IdentityServer8 and Asp.Net Core Identity",
     "author": "Jan Skoruba & Abdelilah El mansouri (TechAdvisor)",

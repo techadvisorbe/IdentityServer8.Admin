@@ -3,6 +3,7 @@
   <PropertyGroup>
 	  <TargetFramework>net8.0</TargetFramework>
 	  <Description>Business Logic layer for the administration of the IdentityServer8</Description>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

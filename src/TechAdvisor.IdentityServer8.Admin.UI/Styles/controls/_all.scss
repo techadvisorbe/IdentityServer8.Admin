@@ -1,7 +1,7 @@
 ﻿/*Controls*/
-@import "navbar.scss";
-@import "validation.summary.scss";
-@import "checkbox.scss";
-@import "picker.scss";
-@import "toastr.scss";
-@import "radio.scss";
+@use "navbar.scss" as *;
+@use "validation.summary.scss" as *;;
+@use "checkbox.scss" as *;
+@use  "picker.scss" as *;
+@use "toastr.scss" as *;
+@use "radio.scss" as *;

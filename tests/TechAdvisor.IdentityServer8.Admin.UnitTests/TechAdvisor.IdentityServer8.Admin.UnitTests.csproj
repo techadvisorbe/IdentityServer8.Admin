@@ -14,15 +14,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="../../src/TechAdvisor.IdentityServer8.Admin/TechAdvisor.IdentityServer8.Admin.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="FluentAssertions" Version="6.4.0" />
+	  <PackageReference Update="FluentAssertions" Version="8.8.0" />
 	</ItemGroup>
 
 </Project>

@@ -1,21 +1,15 @@
 <Project>
 
   <PropertyGroup>
-    <Version>2.1.0</Version>
+    <Version>8.0.0</Version>
     <Authors>Jan Škoruba</Authors>
     <LangVersion>latest</LangVersion>
     <PackageTags>IdentityServer8 Admin OpenIDConnect OAuth2 Identity</PackageTags>
     <PackageProjectUrl>https://github.com/techadvisorbe/IdentityServer8.Admin</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\package\icon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+
 
   <ItemGroup>
     <None Include="..\..\LICENSE.md">

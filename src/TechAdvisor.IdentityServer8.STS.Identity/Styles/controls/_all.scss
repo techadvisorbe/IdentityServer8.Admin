@@ -1,7 +1,7 @@
 ﻿/*Controls*/
-@import "navbar.scss";
-@import "validation.summary.scss";
-@import "checkbox.scss";
-@import "radio.scss";
-@import "cookieconsent.scss";
-@import "QRCode.scss";
+@use  "navbar.scss" as *;
+@use  "validation.summary.scss" as *;
+@use  "checkbox.scss" as *;
+@use  "radio.scss" as *;
+@use  "cookieconsent.scss" as *;
+@use  "QRCode.scss" as *;

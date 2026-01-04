@@ -1,6 +1,6 @@
-![Logo](Images/Skoruba.IdentityServer8.Admin-Logo-ReadMe.png)
+![Logo](Images/TechAdvisor.IdentityServer8.Admin-Logo-ReadMe.png)
 
-# Skoruba.IdentityServer8.Admin - Documentation
+# TechAdvisor.IdentityServer8.Admin - Documentation
 
 - The administration of the IdentityServer8 and Asp.Net Core Identity
 

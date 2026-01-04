@@ -1,6 +1,6 @@
 $templateRoot = "template-publish/content"
 $templateSrc = "template-publish/content/src"
-$temporaryProjectFolder = "SkorubaIdentityServer8Admin"
+$temporaryProjectFolder = "TechAdvisorIdentityServer8Admin"
 $templateDockerFolder = "template-docker"
 
 # Remove original src folder for publish folder
@@ -20,6 +20,6 @@ Copy-Item ./$temporaryProjectFolder/Directory.Build.props $templateRoot -recurse
 Copy-Item ./$temporaryProjectFolder/LICENSE.md $templateRoot -recurse -force
 
 # Copy docker files for Admin, Api and STS
-Copy-Item ./$templateDockerFolder/SkorubaIdentityServer8Admin.Admin/* $templateSrc/SkorubaIdentityServer8Admin.Admin -recurse -force
-Copy-Item ./$templateDockerFolder/SkorubaIdentityServer8Admin.Admin.Api/* $templateSrc/SkorubaIdentityServer8Admin.Admin.Api -recurse -force
-Copy-Item ./$templateDockerFolder/SkorubaIdentityServer8Admin.STS.Identity/* $templateSrc/SkorubaIdentityServer8Admin.STS.Identity -recurse -force
+Copy-Item ./$templateDockerFolder/TechAdvisorIdentityServer8Admin.Admin/* $templateSrc/TechAdvisorIdentityServer8Admin.Admin -recurse -force
+Copy-Item ./$templateDockerFolder/TechAdvisorIdentityServer8Admin.Admin.Api/* $templateSrc/TechAdvisorIdentityServer8Admin.Admin.Api -recurse -force
+Copy-Item ./$templateDockerFolder/TechAdvisorIdentityServer8Admin.STS.Identity/* $templateSrc/TechAdvisorIdentityServer8Admin.STS.Identity -recurse -force

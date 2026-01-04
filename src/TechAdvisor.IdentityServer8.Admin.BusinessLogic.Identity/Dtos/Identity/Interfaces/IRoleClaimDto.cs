@@ -1,0 +1,8 @@
+﻿namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Dtos.Identity.Interfaces
+{
+    public interface IRoleClaimDto : IBaseRoleClaimDto
+    {
+        string ClaimType { get; set; }
+        string ClaimValue { get; set; }
+    }
+}

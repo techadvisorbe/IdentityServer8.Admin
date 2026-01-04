@@ -14,41 +14,41 @@ services:
       proxy: null
       identityserverui:
         aliases:
-          - sts.skoruba.local
-          - admin.skoruba.local
-          - admin-api.skoruba.local
+          - sts.techadvisor.local
+          - admin.techadvisor.local
+          - admin-api.techadvisor.local
     restart: always
-  skorubaidentityserver8admin.admin:
-    image: '${DOCKER_REGISTRY-}skoruba-identityserver8-admin'
+  techadvisoridentityserver8admin.admin:
+    image: '${DOCKER_REGISTRY-}techadvisor-identityserver8-admin'
     build:
       context: .
-      dockerfile: src/SkorubaIdentityServer8Admin.Admin/Dockerfile
-    container_name: skoruba-identityserver8-admin
+      dockerfile: src/TechAdvisorIdentityServer8Admin.Admin/Dockerfile
+    container_name: techadvisor-identityserver8-admin
     environment:
-      - VIRTUAL_HOST=admin.skoruba.local
+      - VIRTUAL_HOST=admin.techadvisor.local
       - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.skoruba.local'
-      - 'AdminConfiguration__IdentityAdminRedirectUri=https://admin.skoruba.local/signin-oidc'
-      - 'AdminConfiguration__IdentityServerBaseUrl=https://sts.skoruba.local'
+      - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.techadvisor.local'
+      - 'AdminConfiguration__IdentityAdminRedirectUri=https://admin.techadvisor.local/signin-oidc'
+      - 'AdminConfiguration__IdentityServerBaseUrl=https://sts.techadvisor.local'
       - AdminConfiguration__RequireHttpsMetadata=false
-      - 'IdentityServerData__Clients__0__ClientUri=https://admin.skoruba.local'
-      - 'IdentityServerData__Clients__0__RedirectUris__0=https://admin.skoruba.local/signin-oidc'
-      - 'IdentityServerData__Clients__0__FrontChannelLogoutUri=https://admin.skoruba.local/signin-oidc'
-      - 'IdentityServerData__Clients__0__PostLogoutRedirectUris__0=https://admin.skoruba.local/signout-callback-oidc'
-      - 'IdentityServerData__Clients__0__AllowedCorsOrigins__0=https://admin.skoruba.local'
-      - 'IdentityServerData__Clients__1__RedirectUris__0=https://admin-api.skoruba.local/swagger/oauth2-redirect.html'
+      - 'IdentityServerData__Clients__0__ClientUri=https://admin.techadvisor.local'
+      - 'IdentityServerData__Clients__0__RedirectUris__0=https://admin.techadvisor.local/signin-oidc'
+      - 'IdentityServerData__Clients__0__FrontChannelLogoutUri=https://admin.techadvisor.local/signin-oidc'
+      - 'IdentityServerData__Clients__0__PostLogoutRedirectUris__0=https://admin.techadvisor.local/signout-callback-oidc'
+      - 'IdentityServerData__Clients__0__AllowedCorsOrigins__0=https://admin.techadvisor.local'
+      - 'IdentityServerData__Clients__1__RedirectUris__0=https://admin-api.techadvisor.local/swagger/oauth2-redirect.html'
       - 'Serilog__WriteTo__1__Args__connectionString=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - DockerConfiguration__UpdateCaCertificate=true
       - ASPNETCORE_ENVIRONMENT=Development
-    command: dotnet SkorubaIdentityServer8Admin.Admin.dll /seed
+    command: dotnet TechAdvisorIdentityServer8Admin.Admin.dll /seed
     depends_on:
       - db
-      - skorubaidentityserver8admin.sts.identity
+      - techadvisoridentityserver8admin.sts.identity
     volumes:
       - './shared/serilog.json:/app/serilog.json'
       - './shared/identitydata.json:/app/identitydata.json'
@@ -56,17 +56,17 @@ services:
       - './shared/nginx/certs/cacerts.crt:/usr/local/share/ca-certificates/cacerts.crt'
     networks:
       identityserverui: null
-  skorubaidentityserver8admin.admin.api:
-    image: '${DOCKER_REGISTRY-}skoruba-identityserver8-admin-api'
+  techadvisoridentityserver8admin.admin.api:
+    image: '${DOCKER_REGISTRY-}techadvisor-identityserver8-admin-api'
     build:
       context: .
-      dockerfile: src/SkorubaIdentityServer8Admin.Admin.Api/Dockerfile
-    container_name: skoruba-identityserver8-admin-api
+      dockerfile: src/TechAdvisorIdentityServer8Admin.Admin.Api/Dockerfile
+    container_name: techadvisor-identityserver8-admin-api
     environment:
-      - VIRTUAL_HOST=admin-api.skoruba.local
+      - VIRTUAL_HOST=admin-api.techadvisor.local
       - AdminApiConfiguration__RequireHttpsMetadata=false
-      - 'AdminApiConfiguration__ApiBaseUrl=https://admin-api.skoruba.local'
-      - 'AdminApiConfiguration__IdentityServerBaseUrl=https://sts.skoruba.local'
+      - 'AdminApiConfiguration__ApiBaseUrl=https://admin-api.techadvisor.local'
+      - 'AdminApiConfiguration__IdentityServerBaseUrl=https://sts.techadvisor.local'
       - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
@@ -80,20 +80,20 @@ services:
       - './shared/nginx/certs/cacerts.crt:/usr/local/share/ca-certificates/cacerts.crt'
     networks:
       identityserverui: null
-  skorubaidentityserver8admin.sts.identity:
-    image: '${DOCKER_REGISTRY-}skoruba-identityserver8-sts-identity'
+  techadvisoridentityserver8admin.sts.identity:
+    image: '${DOCKER_REGISTRY-}techadvisor-identityserver8-sts-identity'
     build:
       context: .
-      dockerfile: src/SkorubaIdentityServer8Admin.STS.Identity/Dockerfile
-    container_name: skoruba-identityserver8-sts-identity
+      dockerfile: src/TechAdvisorIdentityServer8Admin.STS.Identity/Dockerfile
+    container_name: techadvisor-identityserver8-sts-identity
     environment:
-      - VIRTUAL_HOST=sts.skoruba.local
+      - VIRTUAL_HOST=sts.techadvisor.local
       - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.skoruba.local'
-      - 'IdentityServerOptions__IssuerUri=https://sts.skoruba.local'
+      - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.techadvisor.local'
+      - 'IdentityServerOptions__IssuerUri=https://sts.techadvisor.local'
       - IdentityServerOptions__Events__RaiseErrorEvents=true
       - IdentityServerOptions__Events__RaiseInformationEvents=true
       - IdentityServerOptions__Events__RaiseFailureEvents=true
@@ -108,12 +108,12 @@ services:
     networks:
       identityserverui:
         aliases:
-          - sts.skoruba.local
+          - sts.techadvisor.local
   db:
     image: 'mcr.microsoft.com/mssql/server:2017-CU20-ubuntu-16.04'
     ports:
       - '7900:1433'
-    container_name: skoruba-identityserver8-db
+    container_name: techadvisor-identityserver8-db
     environment:
       SA_PASSWORD: '${DB_PASSWORD:-Password_123}'
       ACCEPT_EULA: 'Y'

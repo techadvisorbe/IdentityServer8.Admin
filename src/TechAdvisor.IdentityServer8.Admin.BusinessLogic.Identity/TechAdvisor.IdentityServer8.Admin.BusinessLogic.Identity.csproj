@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net8.0</TargetFramework>
+	  <Description>Business Logic layer for the administration of the Asp.Net Core Identity and IdentityServer8</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TechAdvisor.IdentityServer8.EntityFramework" Version="8.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../TechAdvisor.IdentityServer8.Admin.BusinessLogic.Shared/TechAdvisor.IdentityServer8.Admin.BusinessLogic.Shared.csproj" />
+    <ProjectReference Include="..\TechAdvisor.IdentityServer8.Admin.EntityFramework.Identity\TechAdvisor.IdentityServer8.Admin.EntityFramework.Identity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\IdentityServiceResource.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

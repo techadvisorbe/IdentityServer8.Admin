@@ -2,7 +2,7 @@
 
 ## 1) Admin UI:
 
-- `Skoruba.IdentityServer8.Admin` - `Startup.cs` - method `ConfigureServices`:
+- `TechAdvisor.IdentityServer8.Admin` - `Startup.cs` - method `ConfigureServices`:
 
 ### Configure DbContexts
 
@@ -76,7 +76,7 @@ This extensions method contains only one base policy for administration of whole
 
 ## 2) Security token service (STS)
 
-- `Skoruba.IdentityServer8.STS.Identity` - `Startup.cs` - method `ConfigureServices`:
+- `TechAdvisor.IdentityServer8.STS.Identity` - `Startup.cs` - method `ConfigureServices`:
 
 ### Configure DbContexts
 
@@ -94,7 +94,7 @@ AddIdentityServerStoresWithDbContexts<TConfigurationDbContext, TPersistedGrantDb
 
 ### Configuration of IdentityServer8 and Asp.Net Core Identity
 
-- `Skoruba.IdentityServer8.STS.Identity` - `Startup.cs` - method `ConfigureServices`:
+- `TechAdvisor.IdentityServer8.STS.Identity` - `Startup.cs` - method `ConfigureServices`:
 
 ```
 services.AddAuthenticationServices<IdentityServerConfigurationDbContext, IdentityServerPersistedGrantDbContext, AdminIdentityDbContext, UserIdentity, UserIdentityRole>(Environment, Configuration, Logger);

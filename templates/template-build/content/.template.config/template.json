@@ -1,33 +1,33 @@
 {
   "$schema": "http://json.schemastore.org/template",
-  "author": "Jan Skoruba",
+  "author": "Jan TechAdvisor",
   "classifications": [
     "Web",
     "IdentityServer8",
     "Admin"
   ],
-  "name": "Skoruba IdentityServer8 Admin",
-  "identity": "Skoruba.IdentityServer8.Admin",
-  "groupIdentity": "Skoruba.IdentityServer8.Admin",
+  "name": "TechAdvisor IdentityServer8 Admin",
+  "identity": "TechAdvisor.IdentityServer8.Admin",
+  "groupIdentity": "TechAdvisor.IdentityServer8.Admin",
   "shortName": "skoruba.is8admin",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "Skoruba.IdentityServer8",
+  "sourceName": "TechAdvisor.IdentityServer8",
   "preferNameDirectory": true,
   "symbols": {
     "title": {
       "type": "parameter",
-      "defaultValue": "Skoruba IdentityServer8 Admin",
-      "replaces": "Skoruba IdentityServer8 Admin",
+      "defaultValue": "TechAdvisor IdentityServer8 Admin",
+      "replaces": "TechAdvisor IdentityServer8 Admin",
       "isRequired": true,
       "description": "The title and footer of the administration"
     },
     "adminrole": {
       "type": "parameter",
-      "defaultValue": "SkorubaIdentityAdminAdministrator",
-      "replaces": "SkorubaIdentityAdminAdministrator",
+      "defaultValue": "TechAdvisorIdentityAdminAdministrator",
+      "replaces": "TechAdvisorIdentityAdminAdministrator",
       "isRequired": true,
       "description": "The name of admin role, that is used to authorize the administration (for example: MyAdminRole)."
     },
@@ -48,28 +48,28 @@
   },
   "primaryOutputs": [
     {
-      "path": "src/Skoruba.IdentityServer8.Admin/Skoruba.IdentityServer8.Admin.csproj"
+      "path": "src/TechAdvisor.IdentityServer8.Admin/TechAdvisor.IdentityServer8.Admin.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer8.STS.Identity/Skoruba.IdentityServer8.STS.Identity.csproj"
+      "path": "src/TechAdvisor.IdentityServer8.STS.Identity/TechAdvisor.IdentityServer8.STS.Identity.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer8.Admin.Api/Skoruba.IdentityServer8.Admin.Api.csproj"
+      "path": "src/TechAdvisor.IdentityServer8.Admin.Api/TechAdvisor.IdentityServer8.Admin.Api.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer8.Admin.EntityFramework.Shared/Skoruba.IdentityServer8.Admin.EntityFramework.Shared.csproj"
+      "path": "src/TechAdvisor.IdentityServer8.Admin.EntityFramework.Shared/TechAdvisor.IdentityServer8.Admin.EntityFramework.Shared.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer8.Admin.EntityFramework.MySql/Skoruba.IdentityServer8.Admin.EntityFramework.MySql.csproj"
+      "path": "src/TechAdvisor.IdentityServer8.Admin.EntityFramework.MySql/TechAdvisor.IdentityServer8.Admin.EntityFramework.MySql.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer8.Admin.EntityFramework.PostgreSQL/Skoruba.IdentityServer8.Admin.EntityFramework.PostgreSQL.csproj"
+      "path": "src/TechAdvisor.IdentityServer8.Admin.EntityFramework.PostgreSQL/TechAdvisor.IdentityServer8.Admin.EntityFramework.PostgreSQL.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer8.Admin.EntityFramework.SqlServer/Skoruba.IdentityServer8.Admin.EntityFramework.SqlServer.csproj"
+      "path": "src/TechAdvisor.IdentityServer8.Admin.EntityFramework.SqlServer/TechAdvisor.IdentityServer8.Admin.EntityFramework.SqlServer.csproj"
     },
     {
-      "path": "src/Skoruba.IdentityServer8.Shared/Skoruba.IdentityServer8.Shared.csproj"
+      "path": "src/TechAdvisor.IdentityServer8.Shared/TechAdvisor.IdentityServer8.Shared.csproj"
     }
   ],
   "postActions": [

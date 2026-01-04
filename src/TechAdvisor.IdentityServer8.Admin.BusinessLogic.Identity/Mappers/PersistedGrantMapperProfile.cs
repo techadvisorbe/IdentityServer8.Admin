@@ -1,0 +1,28 @@
+﻿using AutoMapper;
+using IdentityServer8.EntityFramework.Entities;
+using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Dtos.Grant;
+using TechAdvisor.IdentityServer8.Admin.EntityFramework.Entities;
+using TechAdvisor.IdentityServer8.Admin.EntityFramework.Extensions.Common;
+
+namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Mappers
+{
+    public class PersistedGrantMapperProfile : Profile
+    {
+        public PersistedGrantMapperProfile()
+        {
+            // entity to model
+            CreateMap<PersistedGrant, PersistedGrantDto>(MemberList.Destination)
+                .ReverseMap();
+
+            CreateMap<PersistedGrantDataView, PersistedGrantDto>(MemberList.Destination);
+
+            CreateMap<PagedList<PersistedGrantDataView>, PersistedGrantsDto>(MemberList.Destination)
+                .ForMember(x => x.PersistedGrants,
+                    opt => opt.MapFrom(src => src.Data));
+
+            CreateMap<PagedList<PersistedGrant>, PersistedGrantsDto>(MemberList.Destination)
+                .ForMember(x => x.PersistedGrants,
+                    opt => opt.MapFrom(src => src.Data));            
+        }
+    }
+}

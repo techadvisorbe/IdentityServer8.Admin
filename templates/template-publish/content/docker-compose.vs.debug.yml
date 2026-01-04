@@ -1,16 +1,16 @@
 version: '3.4'
 
 services:
-  skorubaidentityserver8admin.admin:
+  techadvisoridentityserver8admin.admin:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
     labels:
-      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/net8.0/SkorubaIdentityServer8Admin.Admin.dll" /seed'
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/net8.0/TechAdvisorIdentityServer8Admin.Admin.dll" /seed'
 
-  skorubaidentityserver8admin.admin.api:
+  techadvisoridentityserver8admin.admin.api:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
-  skorubaidentityserver8admin.sts.identity:
+  techadvisoridentityserver8admin.sts.identity:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

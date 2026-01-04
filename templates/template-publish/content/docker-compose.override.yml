@@ -1,19 +1,19 @@
 version: '3.4'
 
 services:
-  skorubaidentityserver8admin.admin:
+  techadvisoridentityserver8admin.admin:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
   
-  skorubaidentityserver8admin.admin.api:
+  techadvisoridentityserver8admin.admin.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
-  skorubaidentityserver8admin.sts.identity:
+  techadvisoridentityserver8admin.sts.identity:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:

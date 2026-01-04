@@ -278,6 +278,7 @@ __pycache__/
 !/src/TechAdviso.IdentityServer8.Admin.UI/Resources/Views/Log/
 !/src/TechAdviso.IdentityServer8.Admin.BusinessLogic/Dtos/Log/
 !**/Views/Log/
+!**/Events/Log/
 !**/Dtos/Log/
 !/src/TechAdviso.IdentityServer8.Admin.BusinessLogic/Events/Log/
 /src/TechAdviso.IdentityServer8.Admin.Api/appsettings.Production.json

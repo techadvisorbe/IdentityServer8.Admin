@@ -8,7 +8,6 @@
 		<DockerfileContext>..\..</DockerfileContext>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<PackageReference Include="AspNet.Security.OAuth.GitHub" Version="6.0.3" />
 		<PackageReference Include="AspNetCore.HealthChecks.MySql" Version="9.0.0" />

@@ -98,7 +98,7 @@ namespace TechAdvisor.IdentityServer8.STS.Identity.Helpers
             }
             else if (certificateConfiguration.UseTemporarySigningKeyForDevelopment)
             {
-                builder.AddDeveloperSigningCredential();
+                builder.AddDeveloperSigningCredential(false);
             }
             else
             {

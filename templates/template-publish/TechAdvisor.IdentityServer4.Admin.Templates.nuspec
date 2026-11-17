@@ -6,6 +6,7 @@
     <authors>Jan Škoruba, Abdelilah El mansouri</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="file">LICENSE.md</license>
+    <icon>Icon.png</icon>
     <projectUrl>https://github.com/techadvisorbe/IdentityServer8.Admin</projectUrl>
     <description>Templates for the administration of the IdentityServer8 and Asp.Net Core Identity</description>
     <language>en-US</language>

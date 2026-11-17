@@ -1,18 +1,21 @@
-# TechAdvisor.IdentityServer8.Admin
+# <img src="nuget/icon.png" alt="TechAdvisor.IdentityServer8.Admin logo" width="48" height="48" align="center" /> TechAdvisor.IdentityServer8.Admin
 
 > Administration for IdentityServer8 and ASP.NET Core Identity
 
-## 🎉 A .NET 8 Port of IdentityServer4.Admin
+## 🎉 A .NET 10 Port of IdentityServer4.Admin
 
-This project is a community-driven port of [Skoruba.IdentityServer4.Admin](https://github.com/skoruba/IdentityServer4.Admin) to **.NET 8**, leveraging [IdentityServer8](https://github.com/alexhiggins732/IdentityServer8) - an open-source fork of the original IdentityServer.
+This project is a community-driven port of [Skoruba.IdentityServer4.Admin](https://github.com/skoruba/IdentityServer4.Admin) to modern .NET, leveraging [IdentityServer8](https://github.com/alexhiggins732/IdentityServer8) - an open-source fork of the original IdentityServer.
+
+> **Version 10.0.0** runs on **.NET 10 (LTS)**. Upgrading from 8.0.x? See [Upgrading from 8.0.x to 10.0.0](#upgrading-from-80x-to-1000).
 
 **Special thanks to:**
 - **[Jan Skoruba](https://github.com/skoruba)** 🙏 - for creating the original IdentityServer4.Admin project and establishing this incredible foundation
-- **[Alex Higgins](https://github.com/alexhiggins732)** 🙏 - for developing and maintaining IdentityServer8, enabling this modern .NET 8 version
+- **[Alex Higgins](https://github.com/alexhiggins732)** 🙏 - for developing and maintaining IdentityServer8, enabling this modern .NET version
 
 ## Requirements
 
-- [Install](https://www.microsoft.com/net/download/windows#/current) the latest **.NET 8 SDK** (using older versions may lead to 502.5 errors when hosted on IIS or application exiting immediately after starting when self-hosted)
+- [Install](https://dotnet.microsoft.com/download/dotnet/10.0) the latest **.NET 10 SDK** (using older versions may lead to 502.5 errors when hosted on IIS or application exiting immediately after starting when self-hosted)
+- [Node.js](https://nodejs.org/) - only needed to rebuild the client libraries (see [Bundling and Minification](#bundling-and-minification))
 
 ## Installation via dotnet new template
 
@@ -20,10 +23,11 @@ This project is a community-driven port of [Skoruba.IdentityServer4.Admin](https
 
 ### Version 8.0.0 and higher works with **IdentityServer8** 🚀
 
+- **10.0.0** targets **.NET 10** - use **8.0.x** if you still need .NET 8
 - 🔒 **NOTE:** This version affects your database data if you use the default database migrations that are part of the project - double check the migrations according to your database provider and create a database backup
 
 ```sh
-dotnet new -i TechAdvisor.IdentityServer8.Admin.Templates::10.0.0
+dotnet new install TechAdvisor.IdentityServer8.Admin.Templates::10.0.0
 ```
 
 ### Create new project:
@@ -44,6 +48,72 @@ Project template options:
 --adminclientsecret: [string value] for client secret, that is used in the IdentityServer8 configuration for admin client
 --dockersupport: [boolean value] include docker support
 ```
+
+## Upgrading from 8.0.x to 10.0.0
+
+Version 10.0.0 moves the whole solution to **.NET 10 (LTS)**. EF Core 8 and 9 are out of support since November 10, 2026.
+
+### Platform
+
+- Install the **.NET 10 SDK**. Projects target `net10.0`, and `global.json` requires SDK `10.0.100` or later.
+- All Microsoft and EF Core packages are on **10.0.x**, Npgsql on **10.0.x**, and the `TechAdvisor.IdentityServer8.*` and `TechAdvisor.AuditLogging.*` packages on **10.0.0**.
+- Docker images use `mcr.microsoft.com/dotnet/aspnet:10.0` and `sdk:10.0`. These images are based on Ubuntu instead of Debian, so check any custom Dockerfile steps that install OS packages.
+
+### MySQL provider
+
+- `Pomelo.EntityFrameworkCore.MySql` has no EF Core 10 release, so it is replaced by [`Microting.EntityFrameworkCore.MySql`](https://www.nuget.org/packages/Microting.EntityFrameworkCore.MySql), a maintained fork of Pomelo.
+- The API is the same (`UseMySql(connectionString, ServerVersion.AutoDetect(...))`), and the existing MySQL migrations work unchanged.
+- If your own projects reference `Pomelo.EntityFrameworkCore.MySql` (or the obsolete `Pomelo.EntityFrameworkCore.MySql.Design`), replace it with `Microting.EntityFrameworkCore.MySql`. Don't reference both.
+
+### AutoMapper replaced by Mapster
+
+AutoMapper is no longer used; object mapping is done with [Mapster](https://github.com/MapsterMapper/Mapster) (MIT).
+
+- **Mapping profiles** are Mapster `IRegister` classes. They keep their previous names (e.g. `ClientMapperProfile`, `IdentityMapperProfile<...>`), so code that only references them by type still compiles.
+- **Custom profiles** passed to `AddAdminAspNetIdentityServices(...)` (the `profileTypes` set) must now implement `Mapster.IRegister` instead of inheriting from `AutoMapper.Profile`:
+
+  ```csharp
+  // Before (AutoMapper)
+  public class MyMapperProfile : Profile
+  {
+      public MyMapperProfile()
+      {
+          CreateMap<MyEntity, MyDto>()
+              .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.DisplayName));
+      }
+  }
+
+  // After (Mapster)
+  public class MyMapperProfile : IRegister
+  {
+      public void Register(TypeAdapterConfig config)
+      {
+          config.NewConfig<MyEntity, MyDto>()
+              .Map(dest => dest.Name, src => src.DisplayName);
+      }
+  }
+  ```
+
+- **The injected mapper** is now `MapsterMapper.IMapper` (registered as a singleton) instead of `AutoMapper.IMapper`. `Map<TDestination>(source)` and `Map(source, destination)` work as before.
+- **Mapping behaviour is kept compatible:** null source collections still map to empty collections.
+- **Custom `Map(...)` expressions are not null-safe in Mapster.** AutoMapper's `MapFrom` silently returned a default value when a navigation property was null (e.g. `src.Client.Id`). Mapster throws instead, so guard these yourself: `src.Client != null ? src.Client.Id : 0`.
+- `AllowedSigningAlgorithmsConverter.Convert(...)` no longer takes an AutoMapper `ResolutionContext` argument.
+
+### Behaviour changes
+
+- **Admin API returns 401 instead of a login redirect.** Since ASP.NET Core 10, cookie authentication no longer redirects unauthenticated requests to API endpoints (`[ApiController]`) to the login page.
+
+### Security updates
+
+| Package | Version | Advisory |
+| --- | --- | --- |
+| Swashbuckle.AspNetCore | 6.2.3 → 6.9.0 | [GHSA-qrmm-w75w-3wpx](https://github.com/advisories/GHSA-qrmm-w75w-3wpx) |
+| KubernetesClient (via HealthChecks.UI) | pinned to 17.0.14 | [GHSA-w7r3-mgwf-4mqq](https://github.com/advisories/GHSA-w7r3-mgwf-4mqq) |
+| Microsoft.Rest.ClientRuntime (via Azure Key Vault configuration) | pinned to 2.3.24 | [GHSA-whph-446h-6m9v](https://github.com/advisories/GHSA-whph-446h-6m9v) |
+| NuGet.Packaging / NuGet.Protocol (via scaffolding) | pinned to 6.12.5 | [GHSA-g4vj-cjjj-v7hg](https://github.com/advisories/GHSA-g4vj-cjjj-v7hg) |
+| moment (Admin UI) | → 2.31.0 | [GHSA-4p3w-j4w9-5jqw](https://github.com/advisories/GHSA-4p3w-j4w9-5jqw) |
+
+The Admin UI npm dependencies report no vulnerabilities (`npm audit`), and the bundled `wwwroot/dist/js/bundle.min.js` is rebuilt with the patched `moment`.
 
 ## How to configure the Administration - IdentityServer8 and Asp.Net Core Identity
 
@@ -219,7 +289,7 @@ The following Gulp commands are available:
 ### Available database providers:
 
 - SqlServer
-- MySql
+- MySql - via [`Microting.EntityFrameworkCore.MySql`](https://www.nuget.org/packages/Microting.EntityFrameworkCore.MySql), a Pomelo fork with EF Core 10 support
 - PostgreSQL
 
 > It is possible to switch the database provider via `appsettings.json`:
@@ -709,10 +779,12 @@ Fully compatible with .NET 8 and IdentityServer8
 
 ### 10.0.0: .NET 10 & Future Enhancements
 
-**Current Release** - Runs on .NET 10 (LTS)
+**Current Release** - Runs on .NET 10 (LTS) - see [Upgrading from 8.0.x to 10.0.0](#upgrading-from-80x-to-1000)
 
-- [x] Update to .NET 10
+- [x] Update to .NET 10 and EF Core 10
 - [x] Replace AutoMapper with Mapster
+- [x] Switch the MySQL provider to an EF Core 10 compatible Pomelo fork
+- [x] Fix known vulnerabilities in NuGet and npm dependencies
 - [ ] Bootstrap 5 upgrade
 - [ ] Enhanced Admin UI with modern JavaScript frameworks
 - [ ] Performance optimizations
@@ -742,14 +814,14 @@ This project builds upon the excellent work of the original IdentityServer4.Admi
 - [IdentityServer8](https://github.com/alexhiggins732/IdentityServer8) - Modern open-source continuation
 
 **Core Technologies:**
-- ASP.NET Core 8
+- ASP.NET Core 10
 - IdentityServer8 and EntityFramework
 - ASP.NET Core Identity
-- Entity Framework Core
+- Entity Framework Core 10
 - XUnit
 - Fluent Assertions
 - Bogus
-- AutoMapper
+- Mapster
 - Serilog
 
 
@@ -761,9 +833,9 @@ This is a community-maintained project. If you find bugs, have feature requests,
 
 ## Contact and Suggestion
 
-This is a community-maintained .NET 8 port of the original IdentityServer4.Admin project.
+This is a community-maintained .NET port of the original IdentityServer4.Admin project.
 
-For issues, feedback, or contributions related to this .NET 8 version, please create an issue on this repository.
+For issues, feedback, or contributions related to this version, please create an issue on this repository.
 
 For the original project and its history, visit [Skoruba.IdentityServer4.Admin](https://github.com/skoruba/IdentityServer4.Admin).
 

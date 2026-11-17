@@ -3,8 +3,8 @@
 
 // Modified by Jan Škoruba , Abdelilah El mansouri
 
-using AutoMapper;
 using IdentityServer8.EntityFramework.Entities;
+using Mapster;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Configuration;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers.Converters;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Shared.Dtos.Common;
@@ -12,101 +12,99 @@ using TechAdvisor.IdentityServer8.Admin.EntityFramework.Extensions.Common;
 
 namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers
 {
-    public class ClientMapperProfile : Profile
+    public class ClientMapperProfile : IRegister
     {
-        public ClientMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // entity to model
-            CreateMap<Client, ClientDto>(MemberList.Destination)
-                .ForMember(dest => dest.ProtocolType, opt => opt.Condition(srs => srs != null))
-                .ForMember(x => x.AllowedIdentityTokenSigningAlgorithms, opts => opts.ConvertUsing(AllowedSigningAlgorithmsConverter.Converter, x => x.AllowedIdentityTokenSigningAlgorithms))
-                .ReverseMap()
-                .ForMember(x => x.AllowedIdentityTokenSigningAlgorithms, opts => opts.ConvertUsing(AllowedSigningAlgorithmsConverter.Converter, x => x.AllowedIdentityTokenSigningAlgorithms));
+            config.NewConfig<Client, ClientDto>()
+                .Map(dest => dest.AllowedIdentityTokenSigningAlgorithms,
+                    src => AllowedSigningAlgorithmsConverter.Converter.Convert(src.AllowedIdentityTokenSigningAlgorithms));
 
-            CreateMap<SelectItem, SelectItemDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ClientDto, Client>()
+                .Map(dest => dest.AllowedIdentityTokenSigningAlgorithms,
+                    src => AllowedSigningAlgorithmsConverter.Converter.Convert(src.AllowedIdentityTokenSigningAlgorithms));
 
-            CreateMap<ClientGrantType, string>()
-                .ConstructUsing(src => src.GrantType)
-                .ReverseMap()
-                .ForMember(dest => dest.GrantType, opt => opt.MapFrom(src => src));
+            config.NewConfig<SelectItem, SelectItemDto>()
+                .TwoWays();
 
-            CreateMap<ClientRedirectUri, string>()
-                .ConstructUsing(src => src.RedirectUri)
-                .ReverseMap()
-                .ForMember(dest => dest.RedirectUri, opt => opt.MapFrom(src => src));
+            // Child collections of the client are flattened to a list of strings
+            config.NewConfig<ClientGrantType, string>()
+                .MapWith(src => src.GrantType);
+            config.NewConfig<string, ClientGrantType>()
+                .MapWith(src => new ClientGrantType { GrantType = src });
 
-            CreateMap<ClientPostLogoutRedirectUri, string>()
-                .ConstructUsing(src => src.PostLogoutRedirectUri)
-                .ReverseMap()
-                .ForMember(dest => dest.PostLogoutRedirectUri, opt => opt.MapFrom(src => src));
+            config.NewConfig<ClientRedirectUri, string>()
+                .MapWith(src => src.RedirectUri);
+            config.NewConfig<string, ClientRedirectUri>()
+                .MapWith(src => new ClientRedirectUri { RedirectUri = src });
 
-            CreateMap<ClientScope, string>()
-                .ConstructUsing(src => src.Scope)
-                .ReverseMap()
-                .ForMember(dest => dest.Scope, opt => opt.MapFrom(src => src));
+            config.NewConfig<ClientPostLogoutRedirectUri, string>()
+                .MapWith(src => src.PostLogoutRedirectUri);
+            config.NewConfig<string, ClientPostLogoutRedirectUri>()
+                .MapWith(src => new ClientPostLogoutRedirectUri { PostLogoutRedirectUri = src });
 
-            CreateMap<ClientSecret, ClientSecretDto>(MemberList.Destination)
-                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null))
-                .ReverseMap();
+            config.NewConfig<ClientScope, string>()
+                .MapWith(src => src.Scope);
+            config.NewConfig<string, ClientScope>()
+                .MapWith(src => new ClientScope { Scope = src });
 
-            CreateMap<ClientClaim, ClientClaimDto>(MemberList.None)
-                .ConstructUsing(src => new ClientClaimDto() { Type = src.Type, Value = src.Value })
-                .ReverseMap();
+            config.NewConfig<ClientIdPRestriction, string>()
+                .MapWith(src => src.Provider);
+            config.NewConfig<string, ClientIdPRestriction>()
+                .MapWith(src => new ClientIdPRestriction { Provider = src });
 
-            CreateMap<ClientIdPRestriction, string>()
-                .ConstructUsing(src => src.Provider)
-                .ReverseMap()
-                .ForMember(dest => dest.Provider, opt => opt.MapFrom(src => src));
+            config.NewConfig<ClientCorsOrigin, string>()
+                .MapWith(src => src.Origin);
+            config.NewConfig<string, ClientCorsOrigin>()
+                .MapWith(src => new ClientCorsOrigin { Origin = src });
 
-            CreateMap<ClientCorsOrigin, string>()
-                .ConstructUsing(src => src.Origin)
-                .ReverseMap()
-                .ForMember(dest => dest.Origin, opt => opt.MapFrom(src => src));
+            config.NewConfig<ClientSecret, ClientSecretDto>()
+                .TwoWays();
 
-            CreateMap<ClientProperty, ClientPropertyDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ClientClaim, ClientClaimDto>()
+                .TwoWays();
 
-            CreateMap<ClientSecret, ClientSecretsDto>(MemberList.Destination)
-                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null))
-                .ForMember(x => x.ClientSecretId, opt => opt.MapFrom(x => x.Id))
-                .ForMember(x => x.ClientId, opt => opt.MapFrom(x => x.Client.Id));
+            config.NewConfig<ClientProperty, ClientPropertyDto>()
+                .TwoWays();
 
-            CreateMap<ClientClaim, ClientClaimsDto>(MemberList.Destination)
-                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null))
-                .ForMember(x => x.ClientClaimId, opt => opt.MapFrom(x => x.Id))
-                .ForMember(x => x.ClientId, opt => opt.MapFrom(x => x.Client.Id));
+            config.NewConfig<ClientSecret, ClientSecretsDto>()
+                .Map(dest => dest.ClientSecretId, src => src.Id)
+                .Map(dest => dest.ClientId, src => src.Client != null ? src.Client.Id : 0);
 
-            CreateMap<ClientProperty, ClientPropertiesDto>(MemberList.Destination)
-                .ForMember(dest => dest.Key, opt => opt.Condition(srs => srs != null))
-                .ForMember(x => x.ClientPropertyId, opt => opt.MapFrom(x => x.Id))
-                .ForMember(x => x.ClientId, opt => opt.MapFrom(x => x.Client.Id));
+            config.NewConfig<ClientClaim, ClientClaimsDto>()
+                .Map(dest => dest.ClientClaimId, src => src.Id)
+                .Map(dest => dest.ClientId, src => src.Client != null ? src.Client.Id : 0);
+
+            config.NewConfig<ClientProperty, ClientPropertiesDto>()
+                .Map(dest => dest.ClientPropertyId, src => src.Id)
+                .Map(dest => dest.ClientId, src => src.Client != null ? src.Client.Id : 0);
 
             //PagedLists
-            CreateMap<PagedList<ClientSecret>, ClientSecretsDto>(MemberList.Destination)
-                .ForMember(x => x.ClientSecrets, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<ClientSecret>, ClientSecretsDto>()
+                .Map(dest => dest.ClientSecrets, src => src.Data);
 
-            CreateMap<PagedList<ClientClaim>, ClientClaimsDto>(MemberList.Destination)
-                .ForMember(x => x.ClientClaims, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<ClientClaim>, ClientClaimsDto>()
+                .Map(dest => dest.ClientClaims, src => src.Data);
 
-            CreateMap<PagedList<ClientProperty>, ClientPropertiesDto>(MemberList.Destination)
-                .ForMember(x => x.ClientProperties, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<ClientProperty>, ClientPropertiesDto>()
+                .Map(dest => dest.ClientProperties, src => src.Data);
 
-            CreateMap<PagedList<Client>, ClientsDto>(MemberList.Destination)
-                .ForMember(x => x.Clients, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<Client>, ClientsDto>()
+                .Map(dest => dest.Clients, src => src.Data);
 
             // model to entity
-            CreateMap<ClientSecretsDto, ClientSecret>(MemberList.Source)
-                        .ForMember(x => x.Client, dto => dto.MapFrom(src => new Client() { Id = src.ClientId }))
-                        .ForMember(x => x.Id, opt => opt.MapFrom(src => src.ClientSecretId));
+            config.NewConfig<ClientSecretsDto, ClientSecret>()
+                .Map(dest => dest.Client, src => new Client { Id = src.ClientId })
+                .Map(dest => dest.Id, src => src.ClientSecretId);
 
-            CreateMap<ClientClaimsDto, ClientClaim>(MemberList.Source)
-                .ForMember(x => x.Client, dto => dto.MapFrom(src => new Client() { Id = src.ClientId }))
-                .ForMember(x => x.Id, opt => opt.MapFrom(src => src.ClientClaimId));
+            config.NewConfig<ClientClaimsDto, ClientClaim>()
+                .Map(dest => dest.Client, src => new Client { Id = src.ClientId })
+                .Map(dest => dest.Id, src => src.ClientClaimId);
 
-            CreateMap<ClientPropertiesDto, ClientProperty>(MemberList.Source)
-                .ForMember(x => x.Client, dto => dto.MapFrom(src => new Client() { Id = src.ClientId }))
-                .ForMember(x => x.Id, opt => opt.MapFrom(src => src.ClientPropertyId));
+            config.NewConfig<ClientPropertiesDto, ClientProperty>()
+                .Map(dest => dest.Client, src => new Client { Id = src.ClientId })
+                .Map(dest => dest.Id, src => src.ClientPropertyId);
         }
     }
 }

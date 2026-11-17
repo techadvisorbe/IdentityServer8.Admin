@@ -3,68 +3,64 @@
 
 // Modified by Jan Škoruba , Abdelilah El mansouri
 
+using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using IdentityServer8.EntityFramework.Entities;
+using Mapster;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Configuration;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers.Converters;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Extensions.Common;
 
 namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers
 {
-    public class ApiResourceMapperProfile : Profile
+    public class ApiResourceMapperProfile : IRegister
     {
-        public ApiResourceMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // entity to model
-            CreateMap<ApiResource, ApiResourceDto>(MemberList.Destination)
-                .ForMember(x => x.UserClaims, opts => opts.MapFrom(src => src.UserClaims.Select(x => x.Type)))
-                .ForMember(x => x.Scopes, opts => opts.MapFrom(src => src.Scopes.Select(x => x.Scope)))
-                .ForMember(x => x.AllowedAccessTokenSigningAlgorithms,
-                    opts => opts.ConvertUsing(AllowedSigningAlgorithmsConverter.Converter,
-                        x => x.AllowedAccessTokenSigningAlgorithms));
-            
-            CreateMap<ApiResourceSecret, ApiSecretsDto>(MemberList.Destination)
-                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null))
-                .ForMember(x => x.ApiSecretId, opt => opt.MapFrom(x => x.Id))
-                .ForMember(x => x.ApiResourceId, opt => opt.MapFrom(x => x.ApiResource.Id));
+            config.NewConfig<ApiResource, ApiResourceDto>()
+                .Map(dest => dest.UserClaims, src => src.UserClaims != null ? src.UserClaims.Select(x => x.Type).ToList() : new List<string>())
+                .Map(dest => dest.Scopes, src => src.Scopes != null ? src.Scopes.Select(x => x.Scope).ToList() : new List<string>())
+                .Map(dest => dest.AllowedAccessTokenSigningAlgorithms,
+                    src => AllowedSigningAlgorithmsConverter.Converter.Convert(src.AllowedAccessTokenSigningAlgorithms));
 
-            CreateMap<ApiResourceSecret, ApiSecretDto>(MemberList.Destination)
-                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null));
+            config.NewConfig<ApiResourceSecret, ApiSecretsDto>()
+                .Map(dest => dest.ApiSecretId, src => src.Id)
+                .Map(dest => dest.ApiResourceId, src => src.ApiResource != null ? src.ApiResource.Id : 0);
 
-            CreateMap<ApiResourceProperty, ApiResourcePropertyDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ApiResourceSecret, ApiSecretDto>();
 
-            CreateMap<ApiResourceProperty, ApiResourcePropertiesDto>(MemberList.Destination)
-                .ForMember(dest => dest.Key, opt => opt.Condition(srs => srs != null))
-                .ForMember(x => x.ApiResourcePropertyId, opt => opt.MapFrom(x => x.Id))
-                .ForMember(x => x.ApiResourceId, opt => opt.MapFrom(x => x.ApiResource.Id));
+            config.NewConfig<ApiResourceProperty, ApiResourcePropertyDto>()
+                .TwoWays();
+
+            config.NewConfig<ApiResourceProperty, ApiResourcePropertiesDto>()
+                .Map(dest => dest.ApiResourcePropertyId, src => src.Id)
+                .Map(dest => dest.ApiResourceId, src => src.ApiResource != null ? src.ApiResource.Id : 0);
 
             //PagedLists
-            CreateMap<PagedList<ApiResource>, ApiResourcesDto>(MemberList.Destination)
-                .ForMember(x => x.ApiResources, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<ApiResource>, ApiResourcesDto>()
+                .Map(dest => dest.ApiResources, src => src.Data);
 
-            CreateMap<PagedList<ApiResourceSecret>, ApiSecretsDto>(MemberList.Destination)
-                .ForMember(x => x.ApiSecrets, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<ApiResourceSecret>, ApiSecretsDto>()
+                .Map(dest => dest.ApiSecrets, src => src.Data);
 
-            CreateMap<PagedList<ApiResourceProperty>, ApiResourcePropertiesDto>(MemberList.Destination)
-                .ForMember(x => x.ApiResourceProperties, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<ApiResourceProperty>, ApiResourcePropertiesDto>()
+                .Map(dest => dest.ApiResourceProperties, src => src.Data);
 
             // model to entity
-            CreateMap<ApiResourceDto, ApiResource>(MemberList.Source)
-                .ForMember(x => x.UserClaims, opts => opts.MapFrom(src => src.UserClaims.Select(x => new ApiResourceClaim { Type = x })))
-                .ForMember(x => x.Scopes, opts => opts.MapFrom(src => src.Scopes.Select(x => new ApiResourceScope { Scope = x})))
-                .ForMember(x => x.AllowedAccessTokenSigningAlgorithms,
-                    opts => opts.ConvertUsing(AllowedSigningAlgorithmsConverter.Converter,
-                        x => x.AllowedAccessTokenSigningAlgorithms));
+            config.NewConfig<ApiResourceDto, ApiResource>()
+                .Map(dest => dest.UserClaims, src => src.UserClaims != null ? src.UserClaims.Select(x => new ApiResourceClaim { Type = x }).ToList() : new List<ApiResourceClaim>())
+                .Map(dest => dest.Scopes, src => src.Scopes != null ? src.Scopes.Select(x => new ApiResourceScope { Scope = x }).ToList() : new List<ApiResourceScope>())
+                .Map(dest => dest.AllowedAccessTokenSigningAlgorithms,
+                    src => AllowedSigningAlgorithmsConverter.Converter.Convert(src.AllowedAccessTokenSigningAlgorithms));
 
-            CreateMap<ApiSecretsDto, ApiResourceSecret>(MemberList.Source)
-                .ForMember(x => x.ApiResource, opts => opts.MapFrom(src => new ApiResource() { Id = src.ApiResourceId }))
-                .ForMember(x => x.Id, opt => opt.MapFrom(src => src.ApiSecretId));
+            config.NewConfig<ApiSecretsDto, ApiResourceSecret>()
+                .Map(dest => dest.ApiResource, src => new ApiResource { Id = src.ApiResourceId })
+                .Map(dest => dest.Id, src => src.ApiSecretId);
 
-            CreateMap<ApiResourcePropertiesDto, ApiResourceProperty>(MemberList.Source)
-                .ForMember(x => x.ApiResource, dto => dto.MapFrom(src => new ApiResource() { Id = src.ApiResourceId }))
-                .ForMember(x => x.Id, opt => opt.MapFrom(src => src.ApiResourcePropertyId));
+            config.NewConfig<ApiResourcePropertiesDto, ApiResourceProperty>()
+                .Map(dest => dest.ApiResource, src => new ApiResource { Id = src.ApiResourceId })
+                .Map(dest => dest.Id, src => src.ApiResourcePropertyId);
         }
     }
 }

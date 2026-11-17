@@ -1,20 +1,15 @@
-﻿using AutoMapper;
+using Mapster;
+using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Shared.Mappers;
 
 namespace TechAdvisor.IdentityServer8.Admin.Api.Mappers
 {
     public static class IdentityResourceApiMappers
     {
-        static IdentityResourceApiMappers()
-        {
-            Mapper = new MapperConfiguration(cfg => cfg.AddProfile<IdentityResourceApiMapperProfile>())
-                .CreateMapper();
-        }
-
-        internal static IMapper Mapper { get; }
+        internal static TypeAdapterConfig Config { get; } = MapperConfigurationFactory.Create(new IdentityResourceApiMapperProfile());
 
         public static T ToIdentityResourceApiModel<T>(this object source)
         {
-            return Mapper.Map<T>(source);
+            return source.Adapt<T>(Config);
         }
     }
 }

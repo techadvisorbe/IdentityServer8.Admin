@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutoMapper;
+using MapsterMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +9,7 @@ using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Mappers.Configura
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Resources;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Services;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Services.Interfaces;
+using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Shared.Mappers;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Identity.Repositories;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Identity.Repositories.Interfaces;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Interfaces;
@@ -21,13 +22,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             var builder = new MapperConfigurationBuilder();
 
-            services.AddSingleton<IConfigurationProvider>(sp => new MapperConfiguration(cfg =>
-            {
-                foreach (var profileType in builder.ProfileTypes)
-                    cfg.AddProfile(profileType);
-            }));
-
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            // The configuration is built on first resolve so that every mapping registered on the builder is included
+            services.AddSingleton<IMapper>(_ => new Mapper(MapperConfigurationFactory.Create(builder.ProfileTypes)));
 
             return builder;
         }

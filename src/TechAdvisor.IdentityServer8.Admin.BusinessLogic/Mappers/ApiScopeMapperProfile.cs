@@ -3,45 +3,45 @@
 
 // Modified by Jan Škoruba , Abdelilah El mansouri
 
+using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using IdentityServer8.EntityFramework.Entities;
+using Mapster;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Configuration;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Extensions.Common;
 
 namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers
 {
-    public class ApiScopeMapperProfile : Profile
+    public class ApiScopeMapperProfile : IRegister
     {
-        public ApiScopeMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // entity to model
-            CreateMap<ApiScope, ApiScopeDto>(MemberList.Destination)
-                .ForMember(x => x.UserClaims, opt => opt.MapFrom(src => src.UserClaims.Select(x => x.Type)));
-            
-            CreateMap<ApiScopeProperty, ApiScopePropertyDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ApiScope, ApiScopeDto>()
+                .Map(dest => dest.UserClaims, src => src.UserClaims != null ? src.UserClaims.Select(x => x.Type).ToList() : new List<string>());
 
-            CreateMap<ApiScopeProperty, ApiScopePropertiesDto>(MemberList.Destination)
-                .ForMember(dest => dest.Key, opt => opt.Condition(srs => srs != null))
-                .ForMember(x => x.ApiScopePropertyId, opt => opt.MapFrom(x => x.Id))
-                .ForMember(x => x.ApiScopeId, opt => opt.MapFrom(x => x.Scope.Id));
+            config.NewConfig<ApiScopeProperty, ApiScopePropertyDto>()
+                .TwoWays();
+
+            config.NewConfig<ApiScopeProperty, ApiScopePropertiesDto>()
+                .Map(dest => dest.ApiScopePropertyId, src => src.Id)
+                .Map(dest => dest.ApiScopeId, src => src.Scope != null ? src.Scope.Id : 0);
 
             // PagedLists
-            CreateMap<PagedList<ApiScope>, ApiScopesDto>(MemberList.Destination)
-                .ForMember(x => x.Scopes, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<ApiScope>, ApiScopesDto>()
+                .Map(dest => dest.Scopes, src => src.Data);
 
-            CreateMap<PagedList<ApiScopeProperty>, ApiScopePropertiesDto>(MemberList.Destination)
-                .ForMember(x => x.ApiScopeProperties, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<ApiScopeProperty>, ApiScopePropertiesDto>()
+                .Map(dest => dest.ApiScopeProperties, src => src.Data);
 
             // model to entity
-            CreateMap<ApiScopeDto, ApiScope>(MemberList.Source)
-                .ForMember(x => x.UserClaims, opts => opts.MapFrom(src => src.UserClaims.Select(x => new ApiScopeClaim { Type = x })));
+            config.NewConfig<ApiScopeDto, ApiScope>()
+                .Map(dest => dest.UserClaims, src => src.UserClaims != null ? src.UserClaims.Select(x => new ApiScopeClaim { Type = x }).ToList() : new List<ApiScopeClaim>());
 
-            CreateMap<ApiScopePropertiesDto, ApiScopeProperty>(MemberList.Source)
-                .ForMember(x => x.Scope, dto => dto.MapFrom(src => new ApiScope { Id = src.ApiScopeId }))
-                .ForMember(x => x.ScopeId, dto => dto.MapFrom(src => src.ApiScopeId))
-                .ForMember(x => x.Id, opt => opt.MapFrom(src => src.ApiScopePropertyId));
+            config.NewConfig<ApiScopePropertiesDto, ApiScopeProperty>()
+                .Map(dest => dest.Scope, src => new ApiScope { Id = src.ApiScopeId })
+                .Map(dest => dest.ScopeId, src => src.ApiScopeId)
+                .Map(dest => dest.Id, src => src.ApiScopePropertyId);
         }
     }
 }

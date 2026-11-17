@@ -1,28 +1,26 @@
-﻿using AutoMapper;
-using IdentityServer8.EntityFramework.Entities;
+﻿using IdentityServer8.EntityFramework.Entities;
+using Mapster;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Grant;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Entities;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Extensions.Common;
 
 namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers
 {
-    public class PersistedGrantMapperProfile : Profile
+    public class PersistedGrantMapperProfile : IRegister
     {
-        public PersistedGrantMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // entity to model
-            CreateMap<PersistedGrant, PersistedGrantDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<PersistedGrant, PersistedGrantDto>()
+                .TwoWays();
 
-            CreateMap<PersistedGrantDataView, PersistedGrantDto>(MemberList.Destination);
+            config.NewConfig<PersistedGrantDataView, PersistedGrantDto>();
 
-            CreateMap<PagedList<PersistedGrantDataView>, PersistedGrantsDto>(MemberList.Destination)
-                .ForMember(x => x.PersistedGrants,
-                    opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<PersistedGrantDataView>, PersistedGrantsDto>()
+                .Map(dest => dest.PersistedGrants, src => src.Data);
 
-            CreateMap<PagedList<PersistedGrant>, PersistedGrantsDto>(MemberList.Destination)
-                .ForMember(x => x.PersistedGrants,
-                    opt => opt.MapFrom(src => src.Data));            
+            config.NewConfig<PagedList<PersistedGrant>, PersistedGrantsDto>()
+                .Map(dest => dest.PersistedGrants, src => src.Data);
         }
     }
 }

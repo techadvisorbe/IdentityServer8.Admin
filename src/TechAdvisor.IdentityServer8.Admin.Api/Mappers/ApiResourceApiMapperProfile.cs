@@ -1,35 +1,37 @@
-﻿using AutoMapper;
+﻿using Mapster;
 using TechAdvisor.IdentityServer8.Admin.Api.Dtos.ApiResources;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Configuration;
 
 namespace TechAdvisor.IdentityServer8.Admin.Api.Mappers
 {
-    public class ApiResourceApiMapperProfile : Profile
+    public class ApiResourceApiMapperProfile : IRegister
     {
-        public ApiResourceApiMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // Api Resources
-            CreateMap<ApiResourcesDto, ApiResourcesApiDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ApiResourcesDto, ApiResourcesApiDto>()
+                .TwoWays();
 
-            CreateMap<ApiResourceDto, ApiResourceApiDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ApiResourceDto, ApiResourceApiDto>()
+                .TwoWays();
 
             // Api Secrets
-            CreateMap<ApiSecretsDto, ApiSecretApiDto>(MemberList.Destination)
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ApiSecretId))
-                .ReverseMap();
+            config.NewConfig<ApiSecretsDto, ApiSecretApiDto>()
+                .Map(dest => dest.Id, src => src.ApiSecretId);
+            config.NewConfig<ApiSecretApiDto, ApiSecretsDto>()
+                .Map(dest => dest.ApiSecretId, src => src.Id);
 
-            CreateMap<ApiSecretDto, ApiSecretApiDto>(MemberList.Destination);
-            CreateMap<ApiSecretsDto, ApiSecretsApiDto>(MemberList.Destination);
+            config.NewConfig<ApiSecretDto, ApiSecretApiDto>();
+            config.NewConfig<ApiSecretsDto, ApiSecretsApiDto>();
 
             // Api Properties
-            CreateMap<ApiResourcePropertiesDto, ApiResourcePropertyApiDto>(MemberList.Destination)
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ApiResourcePropertyId))
-                .ReverseMap();
+            config.NewConfig<ApiResourcePropertiesDto, ApiResourcePropertyApiDto>()
+                .Map(dest => dest.Id, src => src.ApiResourcePropertyId);
+            config.NewConfig<ApiResourcePropertyApiDto, ApiResourcePropertiesDto>()
+                .Map(dest => dest.ApiResourcePropertyId, src => src.Id);
 
-            CreateMap<ApiResourcePropertyDto, ApiResourcePropertyApiDto>(MemberList.Destination);
-            CreateMap<ApiResourcePropertiesDto, ApiResourcePropertiesApiDto>(MemberList.Destination);
+            config.NewConfig<ApiResourcePropertyDto, ApiResourcePropertyApiDto>();
+            config.NewConfig<ApiResourcePropertiesDto, ApiResourcePropertiesApiDto>();
         }
     }
 }

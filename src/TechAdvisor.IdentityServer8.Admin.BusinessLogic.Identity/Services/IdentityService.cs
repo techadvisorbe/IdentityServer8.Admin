@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
+using MapsterMapper;
 using Microsoft.AspNetCore.Identity;
 using TechAdvisor.AuditLogging.Services;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Dtos.Identity;

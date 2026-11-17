@@ -1,17 +1,17 @@
-﻿using AutoMapper;
+﻿using Mapster;
 using TechAdvisor.IdentityServer8.Admin.Api.Dtos.PersistedGrants;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Grant;
 
 namespace TechAdvisor.IdentityServer8.Admin.Api.Mappers
 {
-    public class PersistedGrantApiMapperProfile : Profile
+    public class PersistedGrantApiMapperProfile : IRegister
     {
-        public PersistedGrantApiMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
-            CreateMap<PersistedGrantDto, PersistedGrantApiDto>(MemberList.Destination);
-            CreateMap<PersistedGrantDto, PersistedGrantSubjectApiDto>(MemberList.Destination);
-            CreateMap<PersistedGrantsDto, PersistedGrantsApiDto>(MemberList.Destination);
-            CreateMap<PersistedGrantsDto, PersistedGrantSubjectsApiDto>(MemberList.Destination);
+            config.NewConfig<PersistedGrantDto, PersistedGrantApiDto>();
+            config.NewConfig<PersistedGrantDto, PersistedGrantSubjectApiDto>();
+            config.NewConfig<PersistedGrantsDto, PersistedGrantsApiDto>();
+            config.NewConfig<PersistedGrantsDto, PersistedGrantSubjectsApiDto>();
         }
     }
 }

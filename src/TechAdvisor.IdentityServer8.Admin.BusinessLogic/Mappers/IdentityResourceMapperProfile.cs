@@ -3,44 +3,43 @@
 
 // Modified by Jan Škoruba , Abdelilah El mansouri
 
+using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using IdentityServer8.EntityFramework.Entities;
+using Mapster;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Configuration;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Extensions.Common;
 
 namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers
 {
-    public class IdentityResourceMapperProfile : Profile
+    public class IdentityResourceMapperProfile : IRegister
     {
-        public IdentityResourceMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // entity to model
-            CreateMap<IdentityResource, IdentityResourceDto>(MemberList.Destination)
-                .ForMember(x => x.UserClaims, opt => opt.MapFrom(src => src.UserClaims.Select(x => x.Type)));
+            config.NewConfig<IdentityResource, IdentityResourceDto>()
+                .Map(dest => dest.UserClaims, src => src.UserClaims != null ? src.UserClaims.Select(x => x.Type).ToList() : new List<string>());
 
-            CreateMap<IdentityResourceProperty, IdentityResourcePropertyDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<IdentityResourceProperty, IdentityResourcePropertyDto>()
+                .TwoWays();
 
-            CreateMap<IdentityResourceProperty, IdentityResourcePropertiesDto>(MemberList.Destination)
-                .ForMember(dest => dest.Key, opt => opt.Condition(srs => srs != null))
-                .ForMember(x => x.IdentityResourcePropertyId, opt => opt.MapFrom(x => x.Id))
-                .ForMember(x => x.IdentityResourceId, opt => opt.MapFrom(x => x.IdentityResource.Id));
+            config.NewConfig<IdentityResourceProperty, IdentityResourcePropertiesDto>()
+                .Map(dest => dest.IdentityResourcePropertyId, src => src.Id)
+                .Map(dest => dest.IdentityResourceId, src => src.IdentityResource != null ? src.IdentityResource.Id : 0);
 
-            CreateMap<PagedList<IdentityResource>, IdentityResourcesDto>(MemberList.Destination)
-                .ForMember(x => x.IdentityResources,
-                    opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<IdentityResource>, IdentityResourcesDto>()
+                .Map(dest => dest.IdentityResources, src => src.Data);
 
-            CreateMap<PagedList<IdentityResourceProperty>, IdentityResourcePropertiesDto>(MemberList.Destination)
-                .ForMember(x => x.IdentityResourceProperties, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<IdentityResourceProperty>, IdentityResourcePropertiesDto>()
+                .Map(dest => dest.IdentityResourceProperties, src => src.Data);
 
             // model to entity
-            CreateMap<IdentityResourceDto, IdentityResource>(MemberList.Source)
-                .ForMember(x => x.UserClaims, opts => opts.MapFrom(src => src.UserClaims.Select(x => new IdentityResourceClaim { Type = x })));
+            config.NewConfig<IdentityResourceDto, IdentityResource>()
+                .Map(dest => dest.UserClaims, src => src.UserClaims != null ? src.UserClaims.Select(x => new IdentityResourceClaim { Type = x }).ToList() : new List<IdentityResourceClaim>());
 
-            CreateMap<IdentityResourcePropertiesDto, IdentityResourceProperty>(MemberList.Source)
-                .ForMember(x => x.IdentityResource, dto => dto.MapFrom(src => new IdentityResource() { Id = src.IdentityResourceId }))
-                .ForMember(x => x.Id, opt => opt.MapFrom(src => src.IdentityResourcePropertyId));
+            config.NewConfig<IdentityResourcePropertiesDto, IdentityResourceProperty>()
+                .Map(dest => dest.IdentityResource, src => new IdentityResource { Id = src.IdentityResourceId })
+                .Map(dest => dest.Id, src => src.IdentityResourcePropertyId);
         }
     }
 }

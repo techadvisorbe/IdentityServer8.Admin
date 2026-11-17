@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 COPY ["src/TechAdvisor.IdentityServer8.STS.Identity/TechAdvisor.IdentityServer8.STS.Identity.csproj", "src/TechAdvisor.IdentityServer8.STS.Identity/"]
 COPY ["src/TechAdvisor.IdentityServer8.Shared.Configuration/TechAdvisor.IdentityServer8.Shared.Configuration.csproj", "src/TechAdvisor.IdentityServer8.Shared.Configuration/"]

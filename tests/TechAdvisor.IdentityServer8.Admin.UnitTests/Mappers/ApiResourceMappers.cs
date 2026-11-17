@@ -35,7 +35,7 @@ namespace TechAdvisor.IdentityServer8.Admin.UnitTests.Mappers
 			//Assert collection
 			apiResource.UserClaims.Select(x => x.Type).Should().BeEquivalentTo(apiResourceDto.UserClaims);
 
-            var allowedAlgList = AllowedSigningAlgorithmsConverter.Converter.Convert(apiResource.AllowedAccessTokenSigningAlgorithms, null);
+            var allowedAlgList = AllowedSigningAlgorithmsConverter.Converter.Convert(apiResource.AllowedAccessTokenSigningAlgorithms);
 			allowedAlgList.Should().BeEquivalentTo(apiResourceDto.AllowedAccessTokenSigningAlgorithms);
 		}
 
@@ -63,7 +63,7 @@ namespace TechAdvisor.IdentityServer8.Admin.UnitTests.Mappers
 
 			//Assert collection
 			apiResource.UserClaims.Select(x => x.Type).Should().BeEquivalentTo(apiResourceDto.UserClaims);
-            var allowedAlgList = AllowedSigningAlgorithmsConverter.Converter.Convert(apiResource.AllowedAccessTokenSigningAlgorithms, null);
+            var allowedAlgList = AllowedSigningAlgorithmsConverter.Converter.Convert(apiResource.AllowedAccessTokenSigningAlgorithms);
             allowedAlgList.Should().BeEquivalentTo(apiResourceDto.AllowedAccessTokenSigningAlgorithms);
 		}
 

@@ -1,52 +1,55 @@
-﻿using AutoMapper;
+﻿using Mapster;
 using TechAdvisor.IdentityServer8.Admin.Api.Dtos.Clients;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Configuration;
 
 namespace TechAdvisor.IdentityServer8.Admin.Api.Mappers
 {
-    public class ClientApiMapperProfile : Profile
+    public class ClientApiMapperProfile : IRegister
     {
-        public ClientApiMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // Client
-            CreateMap<ClientDto, ClientApiDto>(MemberList.Destination)
-                .ForMember(dest => dest.ProtocolType, opt => opt.Condition(srs => srs != null))
-                .ReverseMap();
+            config.NewConfig<ClientDto, ClientApiDto>()
+                .TwoWays();
 
-            CreateMap<ClientsDto, ClientsApiDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ClientsDto, ClientsApiDto>()
+                .TwoWays();
 
-            CreateMap<ClientCloneApiDto, ClientCloneDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ClientCloneApiDto, ClientCloneDto>()
+                .TwoWays();
 
             // Client Secrets
-            CreateMap<ClientSecretsDto, ClientSecretApiDto>(MemberList.Destination)
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ClientSecretId))
-                .ReverseMap();
+            config.NewConfig<ClientSecretsDto, ClientSecretApiDto>()
+                .Map(dest => dest.Id, src => src.ClientSecretId);
+            config.NewConfig<ClientSecretApiDto, ClientSecretsDto>()
+                .Map(dest => dest.ClientSecretId, src => src.Id);
 
-            CreateMap<ClientSecretDto, ClientSecretApiDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ClientSecretDto, ClientSecretApiDto>()
+                .TwoWays();
 
-            CreateMap<ClientSecretsDto, ClientSecretsApiDto>(MemberList.Destination);
+            config.NewConfig<ClientSecretsDto, ClientSecretsApiDto>();
 
             // Client Properties
-            CreateMap<ClientPropertiesDto, ClientPropertyApiDto>(MemberList.Destination)
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ClientPropertyId))
-                .ReverseMap();
+            config.NewConfig<ClientPropertiesDto, ClientPropertyApiDto>()
+                .Map(dest => dest.Id, src => src.ClientPropertyId);
+            config.NewConfig<ClientPropertyApiDto, ClientPropertiesDto>()
+                .Map(dest => dest.ClientPropertyId, src => src.Id);
 
-            CreateMap<ClientPropertyDto, ClientPropertyApiDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<ClientPropertyDto, ClientPropertyApiDto>()
+                .TwoWays();
 
-            CreateMap<ClientPropertiesDto, ClientPropertiesApiDto>(MemberList.Destination);
+            config.NewConfig<ClientPropertiesDto, ClientPropertiesApiDto>();
 
             // Client Claims
-            CreateMap<ClientClaimsDto, ClientClaimApiDto>(MemberList.Destination)
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ClientClaimId))
-                .ReverseMap();
+            config.NewConfig<ClientClaimsDto, ClientClaimApiDto>()
+                .Map(dest => dest.Id, src => src.ClientClaimId);
+            config.NewConfig<ClientClaimApiDto, ClientClaimsDto>()
+                .Map(dest => dest.ClientClaimId, src => src.Id);
 
-            CreateMap<ClientClaimDto, ClientClaimApiDto>(MemberList.Destination)
-                .ReverseMap();
-            CreateMap<ClientClaimsDto, ClientClaimsApiDto>(MemberList.Destination);
+            config.NewConfig<ClientClaimDto, ClientClaimApiDto>()
+                .TwoWays();
+
+            config.NewConfig<ClientClaimsDto, ClientClaimsApiDto>();
         }
     }
 }

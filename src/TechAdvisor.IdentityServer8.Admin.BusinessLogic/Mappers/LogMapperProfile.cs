@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using Mapster;
 using TechAdvisor.AuditLogging.EntityFramework.Entities;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Log;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Entities;
@@ -6,21 +6,21 @@ using TechAdvisor.IdentityServer8.Admin.EntityFramework.Extensions.Common;
 
 namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers
 {
-    public class LogMapperProfile : Profile
+    public class LogMapperProfile : IRegister
     {
-        public LogMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
-            CreateMap<Log, LogDto>(MemberList.Destination)
-                .ReverseMap();
-            
-            CreateMap<PagedList<Log>, LogsDto>(MemberList.Destination)
-                .ForMember(x => x.Logs, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<Log, LogDto>()
+                .TwoWays();
 
-            CreateMap<AuditLog, AuditLogDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<PagedList<Log>, LogsDto>()
+                .Map(dest => dest.Logs, src => src.Data);
 
-            CreateMap<PagedList<AuditLog>, AuditLogsDto>(MemberList.Destination)
-                .ForMember(x => x.Logs, opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<AuditLog, AuditLogDto>()
+                .TwoWays();
+
+            config.NewConfig<PagedList<AuditLog>, AuditLogsDto>()
+                .Map(dest => dest.Logs, src => src.Data);
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿using AutoMapper;
+﻿using Mapster;
 using TechAdvisor.IdentityServer8.Admin.Api.Dtos.Roles;
 using TechAdvisor.IdentityServer8.Admin.Api.Dtos.Users;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Dtos.Identity;
 
 namespace TechAdvisor.IdentityServer8.Admin.Api.Mappers
 {
-    public class IdentityMapperProfile<TRoleDto, TUserRolesDto, TKey, TUserClaimsDto, TUserClaimDto, TUserProviderDto, TUserProvidersDto, TUserChangePasswordDto, TRoleClaimDto, TRoleClaimsDto> : Profile
+    public class IdentityMapperProfile<TRoleDto, TUserRolesDto, TKey, TUserClaimsDto, TUserClaimDto, TUserProviderDto, TUserProvidersDto, TUserChangePasswordDto, TRoleClaimDto, TRoleClaimsDto> : IRegister
         where TUserClaimsDto : UserClaimsDto<TUserClaimDto, TKey>
         where TUserClaimDto : UserClaimDto<TKey>
         where TRoleDto : RoleDto<TKey>
@@ -16,31 +16,31 @@ namespace TechAdvisor.IdentityServer8.Admin.Api.Mappers
         where TRoleClaimsDto : RoleClaimsDto<TRoleClaimDto, TKey>
         where TRoleClaimDto : RoleClaimDto<TKey>
     {
-        public IdentityMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // entity to model
-            CreateMap<TUserClaimsDto, UserClaimsApiDto<TKey>>(MemberList.Destination);
-            CreateMap<TUserClaimsDto, UserClaimApiDto<TKey>>(MemberList.Destination);
+            config.NewConfig<TUserClaimsDto, UserClaimsApiDto<TKey>>();
+            config.NewConfig<TUserClaimsDto, UserClaimApiDto<TKey>>();
 
-            CreateMap<UserClaimApiDto<TKey>, TUserClaimsDto>(MemberList.Source);
-            CreateMap<TUserClaimDto, UserClaimApiDto<TKey>>(MemberList.Destination);
+            config.NewConfig<UserClaimApiDto<TKey>, TUserClaimsDto>();
+            config.NewConfig<TUserClaimDto, UserClaimApiDto<TKey>>();
 
-            CreateMap<TUserRolesDto, UserRolesApiDto<TRoleDto>>(MemberList.Destination);
-            CreateMap<UserRoleApiDto<TKey>, TUserRolesDto>(MemberList.Destination);
+            config.NewConfig<TUserRolesDto, UserRolesApiDto<TRoleDto>>();
+            config.NewConfig<UserRoleApiDto<TKey>, TUserRolesDto>();
 
-            CreateMap<TUserProviderDto, UserProviderApiDto<TKey>>(MemberList.Destination);
-            CreateMap<TUserProvidersDto, UserProvidersApiDto<TKey>>(MemberList.Destination);
-            CreateMap<UserProviderDeleteApiDto<TKey>, TUserProviderDto>(MemberList.Source);
+            config.NewConfig<TUserProviderDto, UserProviderApiDto<TKey>>();
+            config.NewConfig<TUserProvidersDto, UserProvidersApiDto<TKey>>();
+            config.NewConfig<UserProviderDeleteApiDto<TKey>, TUserProviderDto>();
 
-            CreateMap<UserChangePasswordApiDto<TKey>, TUserChangePasswordDto>(MemberList.Destination);
+            config.NewConfig<UserChangePasswordApiDto<TKey>, TUserChangePasswordDto>();
 
-            CreateMap<RoleClaimsApiDto<TKey>, TRoleClaimsDto>(MemberList.Source);
-            CreateMap<RoleClaimApiDto<TKey>, TRoleClaimDto>(MemberList.Destination);
-            CreateMap<RoleClaimApiDto<TKey>, TRoleClaimsDto>(MemberList.Destination);
+            config.NewConfig<RoleClaimsApiDto<TKey>, TRoleClaimsDto>();
+            config.NewConfig<RoleClaimApiDto<TKey>, TRoleClaimDto>();
+            config.NewConfig<RoleClaimApiDto<TKey>, TRoleClaimsDto>();
 
-            CreateMap<TRoleClaimsDto, RoleClaimsApiDto<TKey>>(MemberList.Source);
-            CreateMap<TRoleClaimDto, RoleClaimApiDto<TKey>>(MemberList.Destination);
-            CreateMap<TRoleClaimsDto, RoleClaimApiDto<TKey>>(MemberList.Destination);
+            config.NewConfig<TRoleClaimsDto, RoleClaimsApiDto<TKey>>();
+            config.NewConfig<TRoleClaimDto, RoleClaimApiDto<TKey>>();
+            config.NewConfig<TRoleClaimsDto, RoleClaimApiDto<TKey>>();
         }
     }
 }

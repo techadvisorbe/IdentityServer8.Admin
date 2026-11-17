@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
+using MapsterMapper;
+using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Shared.Mappers;
 using FluentAssertions;
 using IdentityServer8.EntityFramework.Options;
 using Microsoft.AspNetCore.Identity;
@@ -74,13 +75,12 @@ namespace TechAdvisor.IdentityServer8.Admin.UnitTests.Services
 
         private IMapper GetMapper()
         {
-            return new MapperConfiguration(cfg => cfg.AddProfile<IdentityMapperProfile<UserDto<string>, RoleDto<string>, UserIdentity, UserIdentityRole, string,
+            return new Mapper(MapperConfigurationFactory.Create(new IdentityMapperProfile<UserDto<string>, RoleDto<string>, UserIdentity, UserIdentityRole, string,
                         UserIdentityUserClaim, UserIdentityUserRole, UserIdentityUserLogin, UserIdentityRoleClaim,
                         UserIdentityUserToken,
                         UsersDto<UserDto<string>, string>, RolesDto<RoleDto<string>, string>, UserRolesDto<RoleDto<string>, string>,
                         UserClaimsDto<UserClaimDto<string>, string>, UserProviderDto<string>, UserProvidersDto<UserProviderDto<string>, string>,
-                        RoleClaimsDto<RoleClaimDto<string>, string>, UserClaimDto<string>, RoleClaimDto<string>>>())
-                .CreateMapper();
+                        RoleClaimsDto<RoleClaimDto<string>, string>, UserClaimDto<string>, RoleClaimDto<string>>()));
         }
 
         private UserManager<UserIdentity> GetTestUserManager(AdminIdentityDbContext context)

@@ -23,7 +23,7 @@ This project is a community-driven port of [Skoruba.IdentityServer4.Admin](https
 - 🔒 **NOTE:** This version affects your database data if you use the default database migrations that are part of the project - double check the migrations according to your database provider and create a database backup
 
 ```sh
-dotnet new -i TechAdvisor.IdentityServer8.Admin.Templates::8.0.0
+dotnet new -i TechAdvisor.IdentityServer8.Admin.Templates::10.0.0
 ```
 
 ### Create new project:
@@ -702,16 +702,17 @@ It is possible to define the configuration according the client type - by defaul
 
 ### 8.0.0: .NET 8 & IdentityServer8 Support
 
-**Current Release** - Fully compatible with .NET 8 and IdentityServer8
+Fully compatible with .NET 8 and IdentityServer8
 
 - [x] Port to .NET 8
 - [x] Update to IdentityServer8
 
 ### 10.0.0: .NET 10 & Future Enhancements
 
-**Upcoming** - Target support for .NET 10
+**Current Release** - Runs on .NET 10 (LTS)
 
-- [ ] Update to .NET 10
+- [x] Update to .NET 10
+- [x] Replace AutoMapper with Mapster
 - [ ] Bootstrap 5 upgrade
 - [ ] Enhanced Admin UI with modern JavaScript frameworks
 - [ ] Performance optimizations

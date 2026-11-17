@@ -6,17 +6,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 
 namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers.Converters
 {
-    public class AllowedSigningAlgorithmsConverter :
-        IValueConverter<List<string>, string>,
-        IValueConverter<string, List<string>>
+    public class AllowedSigningAlgorithmsConverter
     {
         public static AllowedSigningAlgorithmsConverter Converter = new AllowedSigningAlgorithmsConverter();
 
-        public string Convert(List<string> sourceMember, ResolutionContext context)
+        public string Convert(List<string> sourceMember)
         {
             if (sourceMember == null || !sourceMember.Any())
             {
@@ -25,7 +22,7 @@ namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Mappers.Converters
             return sourceMember.Aggregate((x, y) => $"{x},{y}");
         }
 
-        public List<string> Convert(string sourceMember, ResolutionContext context)
+        public List<string> Convert(string sourceMember)
         {
             var list = new List<string>();
             if (!String.IsNullOrWhiteSpace(sourceMember))

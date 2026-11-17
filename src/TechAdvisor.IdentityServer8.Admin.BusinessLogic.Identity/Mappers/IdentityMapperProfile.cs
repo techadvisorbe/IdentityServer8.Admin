@@ -5,7 +5,7 @@
 
 using System;
 using System.Collections.Generic;
-using AutoMapper;
+using Mapster;
 using Microsoft.AspNetCore.Identity;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Dtos.Identity;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Shared.ExceptionHandling;
@@ -18,7 +18,7 @@ namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Mappers
         TUsersDto, TRolesDto, TUserRolesDto, TUserClaimsDto,
         TUserProviderDto, TUserProvidersDto, TRoleClaimsDto,
         TUserClaimDto, TRoleClaimDto>
-        : Profile
+        : IRegister
         where TUserDto : UserDto<TKey>
         where TRoleDto : RoleDto<TKey>
         where TUser : IdentityUser<TKey>
@@ -39,77 +39,69 @@ namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Mappers
         where TUserClaimDto : UserClaimDto<TKey>
         where TRoleClaimDto : RoleClaimDto<TKey>
     {
-        public IdentityMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // entity to model
-            CreateMap<TUser, TUserDto>(MemberList.Destination);
+            config.NewConfig<TUser, TUserDto>();
 
-            CreateMap<UserLoginInfo, TUserProviderDto>(MemberList.Destination);
+            config.NewConfig<UserLoginInfo, TUserProviderDto>();
 
-            CreateMap<IdentityError, ViewErrorMessage>(MemberList.Destination)
-                .ForMember(x => x.ErrorKey, opt => opt.MapFrom(src => src.Code))
-                .ForMember(x => x.ErrorMessage, opt => opt.MapFrom(src => src.Description));
+            config.NewConfig<IdentityError, ViewErrorMessage>()
+                .Map(dest => dest.ErrorKey, src => src.Code)
+                .Map(dest => dest.ErrorMessage, src => src.Description);
 
             // entity to model
-            CreateMap<TRole, TRoleDto>(MemberList.Destination);
+            config.NewConfig<TRole, TRoleDto>();
 
-            CreateMap<TUser, TUser>(MemberList.Destination)
-                .ForMember(x => x.SecurityStamp, opt => opt.Ignore());
+            // Used to apply changes onto the tracked entity - the security stamp must be preserved
+            config.NewConfig<TUser, TUser>()
+                .Ignore(dest => dest.SecurityStamp);
 
-            CreateMap<TRole, TRole>(MemberList.Destination);
+            config.NewConfig<TRole, TRole>();
 
-            CreateMap<PagedList<TUser>, TUsersDto>(MemberList.Destination)
-                .ForMember(x => x.Users,
-                    opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<TUser>, TUsersDto>()
+                .Map(dest => dest.Users, src => src.Data);
 
-            CreateMap<TUserClaim, TUserClaimDto>(MemberList.Destination)
-                .ForMember(x => x.ClaimId, opt => opt.MapFrom(src => src.Id));
+            config.NewConfig<TUserClaim, TUserClaimDto>()
+                .Map(dest => dest.ClaimId, src => src.Id);
 
-            CreateMap<TUserClaim, TUserClaimsDto>(MemberList.Destination)
-                .ForMember(x => x.ClaimId, opt => opt.MapFrom(src => src.Id));
+            config.NewConfig<TUserClaim, TUserClaimsDto>()
+                .Map(dest => dest.ClaimId, src => src.Id);
 
-            CreateMap<PagedList<TRole>, TRolesDto>(MemberList.Destination)
-                .ForMember(x => x.Roles,
-                    opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<TRole>, TRolesDto>()
+                .Map(dest => dest.Roles, src => src.Data);
 
-            CreateMap<PagedList<TRole>, TUserRolesDto>(MemberList.Destination)
-                .ForMember(x => x.Roles,
-                    opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<TRole>, TUserRolesDto>()
+                .Map(dest => dest.Roles, src => src.Data);
 
-            CreateMap<PagedList<TUserClaim>, TUserClaimsDto>(MemberList.Destination)
-                .ForMember(x => x.Claims,
-                    opt => opt.MapFrom(src => src.Data));
-            
-            CreateMap<PagedList<TRoleClaim>, TRoleClaimsDto>(MemberList.Destination)
-                .ForMember(x => x.Claims,
-                    opt => opt.MapFrom(src => src.Data));
+            config.NewConfig<PagedList<TUserClaim>, TUserClaimsDto>()
+                .Map(dest => dest.Claims, src => src.Data);
 
-            CreateMap<List<UserLoginInfo>, TUserProvidersDto>(MemberList.Destination)
-                .ForMember(x => x.Providers, opt => opt.MapFrom(src => src));
+            config.NewConfig<PagedList<TRoleClaim>, TRoleClaimsDto>()
+                .Map(dest => dest.Claims, src => src.Data);
 
-            CreateMap<UserLoginInfo, TUserProviderDto>(MemberList.Destination);
+            config.NewConfig<List<UserLoginInfo>, TUserProvidersDto>()
+                .Map(dest => dest.Providers, src => src);
 
-            CreateMap<TRoleClaim, TRoleClaimDto>(MemberList.Destination)
-                .ForMember(x => x.ClaimId, opt => opt.MapFrom(src => src.Id));
+            config.NewConfig<TRoleClaim, TRoleClaimDto>()
+                .Map(dest => dest.ClaimId, src => src.Id);
 
-            CreateMap<TRoleClaim, TRoleClaimsDto>(MemberList.Destination)
-                .ForMember(x => x.ClaimId, opt => opt.MapFrom(src => src.Id));
+            config.NewConfig<TRoleClaim, TRoleClaimsDto>()
+                .Map(dest => dest.ClaimId, src => src.Id);
 
-            CreateMap<TUserLogin, TUserProviderDto>(MemberList.Destination);
+            config.NewConfig<TUserLogin, TUserProviderDto>();
 
-            // model to entity
-            CreateMap<TRoleDto, TRole>(MemberList.Source)
-                .ForMember(dest => dest.Id, opt => opt.Condition(srs => srs.Id != null)); ;
+            // model to entity - keep the generated id of a new role/user when the DTO has none
+            config.NewConfig<TRoleDto, TRole>()
+                .IgnoreIf((src, dest) => src.Id == null, dest => dest.Id);
 
-            CreateMap<TRoleClaimsDto, TRoleClaim>(MemberList.Source);
+            config.NewConfig<TRoleClaimsDto, TRoleClaim>();
 
-            CreateMap<TUserClaimsDto, TUserClaim>(MemberList.Source)
-                .ForMember(x => x.Id,
-                    opt => opt.MapFrom(src => src.ClaimId));
+            config.NewConfig<TUserClaimsDto, TUserClaim>()
+                .Map(dest => dest.Id, src => src.ClaimId);
 
-            // model to entity
-            CreateMap<TUserDto, TUser>(MemberList.Source)
-                .ForMember(dest => dest.Id, opt => opt.Condition(srs => srs.Id != null)); ;
+            config.NewConfig<TUserDto, TUser>()
+                .IgnoreIf((src, dest) => src.Id == null, dest => dest.Id);
         }
     }
 }

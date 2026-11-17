@@ -35,10 +35,8 @@ namespace TechAdvisor.IdentityServer8.Admin.Api.IntegrationTests.Tests
             var response = await Client.GetAsync("api/apiresources");
 
             // Assert
-            response.StatusCode.Should().Be(HttpStatusCode.Redirect);
-
-            //The redirect to login
-            response.Headers.Location.ToString().Should().Contain(AuthenticationConsts.AccountLoginPage);
+            // Since .NET 10, cookie authentication returns 401 instead of redirecting to the login page for API endpoints
+            response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
         }
     }
 }

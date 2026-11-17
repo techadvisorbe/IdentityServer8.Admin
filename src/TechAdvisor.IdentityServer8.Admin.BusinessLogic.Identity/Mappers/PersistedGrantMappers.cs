@@ -1,6 +1,7 @@
-﻿using AutoMapper;
-using IdentityServer8.EntityFramework.Entities;
+﻿using IdentityServer8.EntityFramework.Entities;
+using Mapster;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Dtos.Grant;
+using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Shared.Mappers;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Entities;
 using TechAdvisor.IdentityServer8.Admin.EntityFramework.Extensions.Common;
 
@@ -8,27 +9,21 @@ namespace TechAdvisor.IdentityServer8.Admin.BusinessLogic.Identity.Mappers
 {
     public static class PersistedGrantMappers
     {
-        static PersistedGrantMappers()
-        {
-            Mapper = new MapperConfiguration(cfg =>cfg.AddProfile<PersistedGrantMapperProfile>())
-                .CreateMapper();
-        }
-
-        internal static IMapper Mapper { get; }
+        internal static TypeAdapterConfig Config { get; } = MapperConfigurationFactory.Create(new PersistedGrantMapperProfile());
 
         public static PersistedGrantsDto ToModel(this PagedList<PersistedGrantDataView> grant)
         {
-            return grant == null ? null : Mapper.Map<PersistedGrantsDto>(grant);
+            return grant == null ? null : grant.Adapt<PagedList<PersistedGrantDataView>, PersistedGrantsDto>(Config);
         }
 
         public static PersistedGrantsDto ToModel(this PagedList<PersistedGrant> grant)
         {
-            return grant == null ? null : Mapper.Map<PersistedGrantsDto>(grant);
+            return grant == null ? null : grant.Adapt<PagedList<PersistedGrant>, PersistedGrantsDto>(Config);
         }
 
         public static PersistedGrantDto ToModel(this PersistedGrant grant)
         {
-            return grant == null ? null : Mapper.Map<PersistedGrantDto>(grant);
+            return grant == null ? null : grant.Adapt<PersistedGrant, PersistedGrantDto>(Config);
         }
     }
 }

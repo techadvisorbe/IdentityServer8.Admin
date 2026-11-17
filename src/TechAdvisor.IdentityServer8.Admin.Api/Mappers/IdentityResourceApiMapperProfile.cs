@@ -1,27 +1,28 @@
-﻿using AutoMapper;
+﻿using Mapster;
 using TechAdvisor.IdentityServer8.Admin.Api.Dtos.IdentityResources;
 using TechAdvisor.IdentityServer8.Admin.BusinessLogic.Dtos.Configuration;
 
 namespace TechAdvisor.IdentityServer8.Admin.Api.Mappers
 {
-    public class IdentityResourceApiMapperProfile : Profile
+    public class IdentityResourceApiMapperProfile : IRegister
     {
-        public IdentityResourceApiMapperProfile()
+        public void Register(TypeAdapterConfig config)
         {
             // Identity Resources
-            CreateMap<IdentityResourcesDto, IdentityResourcesApiDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<IdentityResourcesDto, IdentityResourcesApiDto>()
+                .TwoWays();
 
-            CreateMap<IdentityResourceDto, IdentityResourceApiDto>(MemberList.Destination)
-                .ReverseMap();
+            config.NewConfig<IdentityResourceDto, IdentityResourceApiDto>()
+                .TwoWays();
 
             // Identity Resources Properties
-            CreateMap<IdentityResourcePropertiesDto, IdentityResourcePropertyApiDto>(MemberList.Destination)
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.IdentityResourcePropertyId))
-                .ReverseMap();
+            config.NewConfig<IdentityResourcePropertiesDto, IdentityResourcePropertyApiDto>()
+                .Map(dest => dest.Id, src => src.IdentityResourcePropertyId);
+            config.NewConfig<IdentityResourcePropertyApiDto, IdentityResourcePropertiesDto>()
+                .Map(dest => dest.IdentityResourcePropertyId, src => src.Id);
 
-            CreateMap<IdentityResourcePropertyDto, IdentityResourcePropertyApiDto>(MemberList.Destination);
-            CreateMap<IdentityResourcePropertiesDto, IdentityResourcePropertiesApiDto>(MemberList.Destination);
+            config.NewConfig<IdentityResourcePropertyDto, IdentityResourcePropertyApiDto>();
+            config.NewConfig<IdentityResourcePropertiesDto, IdentityResourcePropertiesApiDto>();
         }
     }
 }
